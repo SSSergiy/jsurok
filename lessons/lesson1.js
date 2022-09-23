@@ -1,3 +1,3 @@
-age = prompt('Please tell me your age:');
+// age = prompt('Please tell me your age:');
 
-console.log(age);
+// console.log(age);

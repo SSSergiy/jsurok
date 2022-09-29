@@ -102,36 +102,13 @@
 
 
 // ////// -Напечатать полную таблицу умножения от 1 до 10
-// let one = 1;
-// let two = 2;
-// let three = 3;
-// let four = 4;
-// let five = 5;
-// let six = 6;
-// let seven = 7;
-// let eight = 8;
-// let nine = 9;
-// let ten = 10;
-// let iter = 0;
-// for (let i = 1; i <= 10; i++) {
-// 	let multOne = i * one;
-// 	let multTwo = i * two;
-// 	let multThree = i * three;
-// 	let multFour = i * four;
-// 	let multFive = i * five;
-// 	let multSix = i * six;
-// 	let multSeven = i * seven;
-// 	let multEight = i * eight;
-// 	let multNine = i * nine;
-// 	let multTen = i * ten;
-// 	console.log(` ${one} * ${i} = ${multOne}; `);
-// 	console.log(` ${two} * ${i} = ${multTwo}; `);
-// 	console.log(` ${three} * ${i} = ${multThree}; `);
-// 	console.log(` ${four} * ${i} = ${multFour}; `);
-// 	console.log(` ${five} * ${i} = ${multFive}; `);
-// 	console.log(` ${six} * ${i} = ${multSix}; `);
-// 	console.log(` ${seven} * ${i} = ${multSeven}; `);
-// 	console.log(` ${eight} * ${i} = ${multEight}; `);
-// 	console.log(` ${nine} * ${i} = ${multNine}; `);
-// 	console.log(` ${ten} * ${i} = ${multTen}; `);
+// let nomber = 10;
+// let indent = '';
+// for (let x = 1; x <= nomber; x++) {
+//     for (let y = 1; y <= nomber; y++) {
+//         if (y <= nomber) { 
+//             console.log (x  + '*' + y + '=' +  x*y + '\n')
+//         }
+//     }
+//     console.log(indent);
 // }

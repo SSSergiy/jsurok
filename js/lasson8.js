@@ -54,3 +54,12 @@
 // };
 
 
+// ////// -Напечатать полную таблицу умножения от 1 до 10
+let nomber = 10;
+for (let x = 1; x <= nomber; x++) {
+    for (let y = 1; y <= nomber; y++) {
+        if (y <= nomber) { 
+            console.log (x  + '*' + y + '=' +  x*y + '\n')
+        }
+    }
+}

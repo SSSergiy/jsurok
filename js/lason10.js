@@ -1,134 +1,20 @@
-// Дан массив [16,-37,54,-4,72,-56,47,4,-16,25,-37,46,4,-51,27,-63,4,-54,76,-4,12,-35,4,47]
-// Найти сумму и количество положительных элементов.
-
-// let arr = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];
-// let result = arr.reduce(function(sum, elem) {
-// 	if (elem >= 0) {
-// 		return sum + elem;
-// 	} else {
-// 		return sum;
-// 	}
-// });
-// console.log(result);
-
-// let arr = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];
-// let kol = 0;
-// for (var i = 0; i < arr.length; i++) {
-//     if (arr[i] > 0){
-// 			kol++;
-//     }
-// }
-// console.log(kol);
-
-// Найти максимальный элемент массива и его порядковый номер.
-// let array = [
-//   16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54,
-//   76, -4, 12, -35, 4, 47
-// ];
-// console.log(array.indexOf(Math.max(...array)), Math.max(...array));
-
-
-
-// var max = getMaxValue(array);
-// function getMaxValue(array) {
-//   var max = array[0];
-//   for (var i = 0; i < array.length; i++) {
-//     if (max < array[i]) max = array[i];
-//   }
-//   return max;
-// }
-// console.log(max);
-
-
-// // Найти минимальный элемент массива и его порядковый номер.
-// let array = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];
-// console.log(array.indexOf(Math.min(...array)), Math.min(...array));
-
-// var min = getMinValue(array);
-// function getMinValue(array){
-//     var min = array[0];
-//     for (var i = 0; i < array.length; i++) {
-//         if (min > array[i]) min = array[i];
-//     }
-//     return min;
-// }
-// console.log(min);
-
-// Определить количество отрицательных элементов.
-// let arr = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];
-// let kol = 0;
-// for (var i = 0; i < arr.length; i++) {
-//     if (arr[i] < 0){
-// 			kol++;
-//     }
-// }
-// console.log(kol);
-
-// Найти количество нечетных положительных элементов.
-// let arr = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];
-// let kol = 0;
-// for (var i = 0; i < arr.length; i++) {
-// 	if (arr[i] > 0 && arr[i] % 2 > 0)
-// 			kol++;
-// 		}
-// console.log(kol);
-
-// Найти количество четных положительных элементов.
-// let arr = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];
-// let kol = 0;
-// for (var i = 0; i < arr.length; i++) {
-// 	if (arr[i] > 0 && arr[i] % 2 === 0)
-// 			kol++;
-// 		}
-// console.log(kol);
-
-// Найти сумму четных положительных элементов.
-// let arr = [
-//   16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54,
-//   76, -4, 12, -35, 4, 47];
-// let sum = 0;
-// for (var i = 0; i < arr.length; i++) {
-// 	if (arr[i] > 0 && arr[i] % 2 === 0) {
-// 		sum += arr[i];
-// 	}
-// }
-// console.log(sum);
-
-// Найти сумму нечетных положительных элементов.
-// let arr = [
-//   16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54,
-//   76, -4, 12, -35, 4, 47];
-// let sum = 0;
-// for (var i = 0; i < arr.length; i++) {
-// 	if (arr[i] > 0 && arr[i] % 2 > 0) {
-// 		sum += arr[i];
-// 	}
-// }
-// console.log(sum);
-
-// Найти произведение положительных элементов.
-// let arr = [
-//   16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54,
-//   76, -4, 12, -35, 4, 47];
-// let sum = 1;
-// for (var i = 0; i < arr.length; i++) {
-// 	if (arr[i] > 0) {
-// 		sum *= arr[i];
-// 	}
-// }
-// console.log(sum);
-
-// Найти наибольший среди элементов массива, остальные обнулить.
-// let arr = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];
-// let max = arr[0];
-// let maxi = 0;
-// for (let i = 1; i < arr.length; i++) {
-//   if (arr[i] > max) {
-//     max = arr[i];
-//     arr[maxi] = 0;
-//     maxi = i;
-//   } else {
-//     arr[i] = 0;
-//   }
-// }
-// console.log(arr);
+// Дан массив объектов. 
+// Вывести массив телефонных номеров пользователей,
+// у которых баланс более 2000 долларов.
+// И найти сумму всех балансов пользователей
+let obj = [
+	{"index": 0,"isActive": true, "balance": "$2,226.60", "name": "Eugenia Sawyer", "gender": "female", "phone": "+1 (840) 583-3207", "address": "949 John Street, Rose, Puerto Rico, 1857" },
+	{"index": 1,"isActive": true,"balance": "$2,613.77","name": "Pauline Gallegos","gender": "female","phone": "+1 (985) 593-3328","address": "328 Greenpoint Avenue, Torboy, North Dakota, 6857"},
+	{"index": 2,"isActive": false,"balance": "$3,976.41","name": "Middleton Chaney","gender": "male","phone": "+1 (995) 591-2478","address": "807 Fleet Walk, Brutus, Arkansas, 9783"},
+	{"index": 3,"isActive": true,"balance": "$1,934.58","name": "Burns Poole","gender": "male","phone": "+1 (885) 559-3422","address": "730 Seba Avenue, Osage, Alabama, 6290"},
+	{"index": 4,"isActive": true,"balance": "$3,261.65","name": "Mcfadden Horne","gender": "male","phone": "+1 (942) 565-3988","address": "120 Scholes Street, Kirk, Michigan, 1018"},
+	{ "index": 5,"isActive": false, "balance": "$1,790.56", "name": "Suzette Lewis", "gender": "female", "phone": "+1 (837) 586-3283", "address": "314 Dunne Place, Bawcomville, Guam, 9053" }]
+let mas = []
+let sum = 0;
+for (let i = 0; i < Object.keys(obj).length; i++){
+	if (+obj[i].balance.replace(",", "").replace("$", "") > 2000) {
+		sum+= +obj[i].balance.replace(",", "").replace("$", "")
+		mas.push(obj[i].phone);
+	}
+}
+console.log(mas,sum); 

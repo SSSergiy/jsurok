@@ -1,5 +1,4 @@
 class ApartmentTenant {
-
   constructor(name) {
     this.name = name;
   }

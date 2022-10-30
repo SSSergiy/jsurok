@@ -1,14 +1,20 @@
+// Створити та описати сутності Багатоквартирного будинку, квартири, мешканця.
+// Додати можливість створювати нові будинки на певну кількість квартир.
+// Не обмежувати кількість мешканців у квартирі
+
 class ApartmentHouse {
 	numberOfApartments;
-	numberNfFloors;
+	numberOfFloors;
 	apartments = [];
-	constructor(numberOfApartments,numberNfFloors) {
+	numberApartment = 0;
+	constructor(numberOfApartments,numberOfFloors) {
 		this.numberOfApartments = numberOfApartments;
-		this.numberNfFloors = numberNfFloors;
+		this.numberOfFloors = numberOfFloors;
 	}
-	addApartment() {
-		if (numberOfApartments > 0 || numberOfApartments <= 200) {
+	addApartment(numberOfApartmentResidents) {
+		if (this.numberOfApartments > 0 || this.numberOfApartments <= 200) {
 			this.apartments.push(new Apartment(numberOfApartmentResidents));
+			this.numberApartment++;
 		}
 	}
 }
@@ -32,8 +38,8 @@ class Tenant {
 		this.gender = gender;
 	}
 }
-const apartmentHouse = new ApartmentHouse(2, 4)
-apartmentHouse.addApartment
+const apartmentHouse = new ApartmentHouse(1, 1)
+apartmentHouse.addApartment(1)
 console.log(apartmentHouse);
 const oien = new Apartment
 oien.addTenat("IVan", 45, "Man")

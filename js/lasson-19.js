@@ -11,9 +11,9 @@ class ApartmentHouse {
 		this.numberOfApartments = numberOfApartments;
 		this.numberOfFloors = numberOfFloors;
 	}
-	addApartment(numberOfApartmentResidents) {
+	addApartment(numberOfApartmentResident) {
 		if (this.numberOfApartments > 0 || this.numberOfApartments <= 200) {
-			this.apartments.push(new Apartment(numberOfApartmentResidents));
+			this.apartments.push(new Apartment(numberOfApartmentResident));
 			this.numberApartment++;
 		}
 	}

@@ -4,7 +4,9 @@ class ApartmentHouse {
 	constructor(numberOfApartments,numberOfApartmentResidents) {
 		this.numberOfApartments = numberOfApartments;
 		for (let index = 1; index <= this.numberOfApartments; index++) {
-			this.apartments.push(new Apartment(numberOfApartmentResidents));
+			if (numberOfApartments>0||numberOfApartments<=200) {
+				this.apartments.push(new Apartment(numberOfApartmentResidents));
+			}
 		}
 	}
 }

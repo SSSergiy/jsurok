@@ -16,7 +16,9 @@ class Apartment {
 	constructor(numberOfApartmentResidents) {
 		this.numberOfApartmentResidents = numberOfApartmentResidents;
 		for (let index = 1; index <= this.numberOfApartmentResidents; index++) {
-			this.tenants.push(new Tenant("Alisa",18,"Woman"))
+			if (numberOfApartmentResidents>0) {
+				this.tenants.push(new Tenant("Alisa",18,"Woman"))
+			}
 		}
 	}
 }

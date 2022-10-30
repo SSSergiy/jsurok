@@ -1,16 +1,14 @@
 class ApartmentHouse {
 	numberOfApartments;
-	numberOfApartmentsPerFloor = 4;
 	numberNfFloors;
 	apartments = [];
-	constructor(numberOfApartments,numberOfApartmentResidents,
-		numberNfFloors) {
+	constructor(numberOfApartments,numberNfFloors) {
 		this.numberOfApartments = numberOfApartments;
 		this.numberNfFloors = numberNfFloors;
-		for (let index = 1; index <= this.numberOfApartments; index++) {
-			if (numberOfApartments>0||numberOfApartments<=200) {
-				this.apartments.push(new Apartment(numberOfApartmentResidents));
-			}
+	}
+	addApartment() {
+		if (numberOfApartments > 0 || numberOfApartments <= 200) {
+			this.apartments.push(new Apartment(numberOfApartmentResidents));
 		}
 	}
 }
@@ -19,15 +17,9 @@ class Apartment {
 	tenants = [];
 	constructor(numberOfApartmentResidents) {
 		this.numberOfApartmentResidents = numberOfApartmentResidents;
-		for (let index = 1; index <= this.numberOfApartmentResidents; index++) {
-			if (numberOfApartmentResidents>0) {
-				this.tenants.push(new Tenant("Alisa",18,"Woman"))
-			}
-		}
 	}
-	setTenat(name,age,gender) {
-		let tenant = new Tenant(name, age, gender)
-		this.tenants.push(tenant);
+	addTenat(name,age,gender) {
+		this.tenants.push(new Tenant(name, age, gender));
 	}
 	getTenat() {
 		return this.tenants;
@@ -40,8 +32,10 @@ class Tenant {
 		this.gender = gender;
 	}
 }
-const apartmentHouse = new ApartmentHouse(2,4)
+const apartmentHouse = new ApartmentHouse(2, 4)
+apartmentHouse.addApartment
 console.log(apartmentHouse);
-apartmentHouse.apartments[0].setTenat("IVan", 45, "Man")
+const oien = new Apartment
+oien.addTenat("IVan", 45, "Man")
 console.log(apartmentHouse);
 

@@ -14,18 +14,29 @@
 		}
 
 		.container {
-			display: flex;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			place-items: center;
+			gap: 1rem;
 		}
 
-		.input {
-			width: 300px;
+		ul {
+			list-style-type: none;
 		}
 
-		.ghost {
-			width: 100px;
-			height: 30px;
-			margin-left: 20px;
-			background-color: grey;
+		li {
+			padding: 0.5rem;
+			cursor: pointer;
+		}
+
+		li:active {
+			color: blue;
+		}
+
+		button {
+			padding: 0.5rem 2rem;
+			margin: 1rem 0;
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -33,10 +44,32 @@
 <body>
 	<div class="wrapper">
 		<div class="container">
-			<input type="text" class="input">
-			<span class="ghost"></span>
+			<ul id="categories">
+				<li data-category-id="1">Toys</li>
+				<li data-category-id="2">Sports</li>
+				<li data-category-id="3">Toys</li>
+				<li data-category-id="4">Grocery</li>
+				<li data-category-id="5">Garden</li>
+			</ul>
+			<ul id="products">
+				<li data-product-id="1">Eggplant - Asian</li>
+				<li data-product-id="2">Jagermeister</li>
+				<li data-product-id="3">Wine - Lou Black Shiraz</li>
+				<li data-product-id="4">Beef - Ox Tongue</li>
+				<li data-product-id="5">Beef - Bones, Marrow</li>
+			</ul>
+			<div>
+				<div id="description">
+					Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec
+					vitae
+					nisi.
+				</div>
+				<button id="buy-button">Buy</button>
+				<div id="message">The product has been added to the basket</div>
+			</div>
 		</div>
 	</div>
-	<script src="./js-modules/homework-0021.js"></script>
+	<script src="./js-modules/homework-0026.js"></script>
+
 </body>
 </html>

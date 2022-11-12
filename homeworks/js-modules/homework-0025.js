@@ -3,6 +3,7 @@ const container = document.querySelector(".container");
 const reactionElements = reactions.map((reaction) => {
   const wrapper = document.createElement("div");
   const button = document.createElement("button");
+	button.classList.add("button")
   button.innerText = reaction;
   const counter = document.createElement("div");
   counter.classList.add("counter");
@@ -12,6 +13,9 @@ const reactionElements = reactions.map((reaction) => {
 });
 
 reactionElements.forEach((elem) => container.appendChild(elem));
+
 container.addEventListener("click", function (e) {
-	e.target.nextSibling.innerHTML++
+	if (e.target.classList.contains('button')) {
+		e.target.nextSibling.innerHTML++
+	}
 }, false)

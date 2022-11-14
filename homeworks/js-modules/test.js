@@ -79,21 +79,21 @@
 
 // console.log(a(listOfLists));
 
-const buttonHtml = document.querySelector('#button');
-const inputHtml = document.querySelector('input');
+// const buttonHtml = document.querySelector('#button');
+// const inputHtml = document.querySelector('input');
 
-const urlProtocol = inputHtml.value.split(':')[0];
-function goToUrl() {
-  let protocol = 'https://';
-  if (
-    urlProtocol === 'https' ||
-    urlProtocol === 'http'
-  ) {
-    location.href = inputHtml.value;
-  } else {
-    location.href = protocol + inputHtml.value;
-  }
-}
-buttonHtml.addEventListener('click', (e) => {
-  goToUrl();
-});
+// const urlProtocol = inputHtml.value.split(':')[0];
+// function goToUrl() {
+//   let protocol = 'https://';
+//   if (
+//     urlProtocol === 'https' ||
+//     urlProtocol === 'http'
+//   ) {
+//     location.href = inputHtml.value;
+//   } else {
+//     location.href = protocol + inputHtml.value;
+//   }
+// }
+// buttonHtml.addEventListener('click', (e) => {
+//   goToUrl();
+// });

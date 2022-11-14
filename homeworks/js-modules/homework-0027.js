@@ -1,9 +1,8 @@
 const btnHtml = document.querySelector('#button');
 const inputHtml = document.querySelector('input');
-const nameProtocol = inputHtml.value.split(':')[0];
 function goToPage() {
   let d = 'https://';
-  if (nameProtocol === 'https' || nameProtocol === 'http') {
+  if (inputHtml.value.split(':')[0] === 'https' || inputHtml.value.split(':')[0] === 'http') {
     location.href = inputHtml.value;
   } else {
     location.href = d + inputHtml.value;

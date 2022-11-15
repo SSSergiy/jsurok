@@ -133,9 +133,43 @@ const products = [
       'Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.'
   }
 ];
-const descriptionWindov = document.getElementById('description').innerHTML;
-const messageWindov = document.getElementById('message').innerHTML;
-const containerHtml = document.querySelector(".container").addEventListener("click",function(e){
-	console.log(e.target);
-},false)
-console.log(containerHtml);
+const productsHtml = document.querySelector('#products');
+const description = document.querySelector('#description');
+const buttonHtml = document.querySelector('#buy-button');
+buttonHtml.style.visibility = 'hidden';
+const messageHtml = document.querySelector('#message');
+messageHtml.style.visibility = 'hidden';
+function newTag(arr, id) {
+  description.innerHTML = '';
+  buttonHtml.style.visibility = 'hidden';
+  productsHtml.replaceChildren();
+  for (const index of arr) {
+    if (index.category_id === id) {
+      const li = document.createElement('li');
+      li.setAttribute('data-product-id', `${index.id}`);
+      li.innerHTML = index.name;
+      li.className = 'link';
+      productsHtml.prepend(li);
+    }
+  }
+}
+function prodFunction(arr, id) {
+  buttonHtml.style.visibility = 'visible';
+  for (const index of arr) {
+    if (index.id === id) {
+      description.innerHTML = index.description;
+    }
+  }
+}
+document.querySelector('#categories').addEventListener('click', (e) => {
+  newTag(products, +e.target.dataset.categoryId);
+});
+document.querySelector('#products').addEventListener('click', (e) => {
+  prodFunction(products, +e.target.dataset.productId);
+});
+buttonHtml.addEventListener('click', (e) => {
+  messageHtml.style.visibility = 'visible';
+  setTimeout(() => {
+    location.reload();
+  }, 1670);
+});

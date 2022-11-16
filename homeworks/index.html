@@ -8,5 +8,64 @@
 <body>
 
 		<script src="js-modules/homework-0028.js"></script>
+	<style>
+		.wrapper {
+			display: grid;
+			place-items: center;
+			height: 100vh;
+		}
+		.container {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			place-items: center;
+			gap: 1rem;
+		}
+
+		ul {
+			list-style-type: none;
+		}
+
+		li {
+			padding: 0.5rem;
+			cursor: pointer;
+		}
+
+		li:active {
+			color: blue;
+		}
+
+		button {
+			padding: 0.5rem 2rem;
+			margin: 1rem 0;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<img src="./img/dog1.jpeg" alt="dog1">
+	</div>
+		<div class="container">
+			<ul id="categories">
+				<li data-category-id="1">Toys</li>
+				<li data-category-id="2">Sports</li>
+				<li data-category-id="3">Toys</li>
+				<li data-category-id="4">Grocery</li>
+				<li data-category-id="5">Garden</li>
+			</ul>
+			<ul id="products">
+			</ul>
+			<div>
+				<div id="description">
+				
+				</div>
+				<button id="buy-button">Buy</button>
+				<div id="message">The product has been added to the basket</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js-modules/homework-0026.js"></script>
 </body>
+
 </html>

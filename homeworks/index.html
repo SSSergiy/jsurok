@@ -5,6 +5,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+</head>
+<body>
+	<div class="container">
+		<input type="text">
+		<button id="button">leh</button>
+	</div>
+	<script src="./js-modules/homework-0027.js"></script>
+<body>
+
+		<script src="js-modules/homework-0028.js"></script>
 	<style>
 		.wrapper {
 			display: grid;
@@ -12,7 +22,10 @@
 			height: 100vh;
 		}
 		.container {
-			display: flex;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			place-items: center;
+			gap: 1rem;
 		}
 
 		button {
@@ -28,6 +41,23 @@
 		}
 		.counter {
 			text-align: center;
+		ul {
+			list-style-type: none;
+		}
+
+		li {
+			padding: 0.5rem;
+			cursor: pointer;
+		}
+
+		li:active {
+			color: blue;
+		}
+
+		button {
+			padding: 0.5rem 2rem;
+			margin: 1rem 0;
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -36,5 +66,28 @@
 		<div class="container"></div>
 	</div>
 	<script src="./js-modules/homework-0025.js"></script>
+		<img src="./img/dog1.jpeg" alt="dog1">
+	</div>
+		<div class="container">
+			<ul id="categories">
+				<li data-category-id="1">Toys</li>
+				<li data-category-id="2">Sports</li>
+				<li data-category-id="3">Toys</li>
+				<li data-category-id="4">Grocery</li>
+				<li data-category-id="5">Garden</li>
+			</ul>
+			<ul id="products">
+			</ul>
+			<div>
+				<div id="description">
+				
+				</div>
+				<button id="buy-button">Buy</button>
+				<div id="message">The product has been added to the basket</div>
+			</div>
+		</div>
+	</div>
+	<script src="js-modules/homework-0026.js"></script>
 </body>
+
 </html>

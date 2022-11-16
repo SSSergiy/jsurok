@@ -23,6 +23,12 @@
 		}
 		.container {
 			display: grid;
+			grid-template-columns: 1fr 5fr 1fr;
+			place-items: center;
+			gap: 0.5rem;
+		}
+		button {
+			height: 2rem;
 			grid-template-columns: 1fr 1fr 1fr;
 			place-items: center;
 			gap: 1rem;
@@ -69,6 +75,12 @@
 		<img src="./img/dog1.jpeg" alt="dog1">
 	</div>
 		<div class="container">
+			<button>Prev</button>
+			<img src="./img/dog1.jpeg" alt="dog1">
+			<button>Next</button>
+		</div>
+	</div>
+	<script src="./js-modules/homework-0024.js"></script>
 			<ul id="categories">
 				<li data-category-id="1">Toys</li>
 				<li data-category-id="2">Sports</li>

@@ -164,6 +164,9 @@ function newTag(arr, id) {
     }
   }
 }
+
+
+
 function prodFunction(arr, id) {
   buttonHtml.style.visibility = 'visible';
   for (const index of arr) {
@@ -183,25 +186,40 @@ buttonHtml.addEventListener('click', (e) => {
     document.querySelector('.form').removeAttribute('hidden');
   }
 });
-const isCheckboxOrRadio = type => ['checkbox', 'radio'].includes(type);
-const {form} = document.forms;
-function retrieveFormValue(event) {
-    event.preventDefault();
-    const values = {};
-    for (let field of form) {
-        const {name} = field;
-        if (name) {
-            const {type, checked, value} = field;
-            values[name] = isCheckboxOrRadio(type) ? checked : value;
-        }
+const onSubmit = (e) => {
+	e.preventDefault();
+	const formName = document.getElementById('formName').value;
+	const mailWarehouse = document.getElementById('mailWarehouse').value;
+	const numberOfGoods = document.getElementById('numberOfGoods').value;
+	let errors = document.getElementById('error')
+	if ( formName.length < 1 || mailWarehouse.length < 1 || numberOfGoods.length < 1) {
+		errors.innerText = 'nevsi polia zapovneti';
+	} else {
+		errors.innerText = '';
 	}
-	values.productPrice = 250;
-	values.purchaseDate = new Date();
-	values.orderPrice = +values.numberOfGoods * values.productPrice;
-	const section = document.querySelector("section")
-	section.removeAttribute("hidden")
-	section.innerHTML = `<pre>${JSON.stringify(values)}<pre>`
+}
+const isCheckboxOrRadio = (type) => ['checkbox', 'radio'].includes(type);
+const { form } = document.forms;
+function retrieveFormValue(event) {
+  event.preventDefault();
+  const values = {};
+  for (let field of form) {
+    const { name } = field;
+		const { type, checked, value } = field;
+		if (name) {
+			if (isCheckboxOrRadio(type)) {
+				values[value]= checked
+			} else {
+				values[name] = value
+			}
+    }
+  }
+  values.productPrice = 250;
+  values.purchaseDate = new Date();
+  values.orderPrice = +values.numberOfGoods * values.productPrice;
+  const section = document.querySelector('section');
+  section.removeAttribute('hidden');
+  section.innerHTML = `<pre>${JSON.stringify(values)}<pre>`;
 }
 form.addEventListener('submit', retrieveFormValue);
-
 

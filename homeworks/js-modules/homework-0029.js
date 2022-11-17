@@ -168,8 +168,29 @@ document.querySelector('#products').addEventListener('click', (e) => {
   prodFunction(products, +e.target.dataset.productId);
 });
 buttonHtml.addEventListener('click', (e) => {
-  messageHtml.style.visibility = 'visible';
-  setTimeout(() => {
-    location.reload();
-  }, 1670);
+  if (e.target.tagName === 'BUTTON') {
+    document.querySelector('.form').removeAttribute('hidden');
+  }
 });
+const isCheckboxOrRadio = type => ['checkbox', 'radio'].includes(type);
+const {form} = document.forms;
+function retrieveFormValue(event) {
+    event.preventDefault();
+    const values = {};
+    for (let field of form) {
+        const {name} = field;
+        if (name) {
+            const {type, checked, value} = field;
+            values[name] = isCheckboxOrRadio(type) ? checked : value;
+        }
+	}
+	values.productPrice = 250;
+	values.purchaseDate = new Date();
+	values.orderPrice = +values.numberOfGoods * values.productPrice;
+	const section = document.querySelector("section")
+	section.removeAttribute("hidden")
+	section.innerHTML = `<pre>${JSON.stringify(values)}<pre>`
+}
+form.addEventListener('submit', retrieveFormValue);
+
+

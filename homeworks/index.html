@@ -7,14 +7,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<style>
-		.form__input{
+		.form__input {
 			padding: 1rem;
-		width: 100%;
+			max-width:  100%;
 		}
+		form {
+			max-width:  100%;
+		}
+		p {
+			display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 100%;
+    align-content: stretch;
+
+		}
+
 		body {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	</style>
 </head>
@@ -23,32 +35,48 @@
 	<div class="form">
 		<form action="#" id="form" class="form__body">
 			<h1 class="form__title">Ми хотіли б Вам допомогти</h1>
-			<div class="form__item">
-				<input id="formName" name="name" type="text" class="form__input" placeholder="Iм’я"
-					title="Разрешено от 3 до 20 символов" pattern="[A-Za-z0-9]{3,20}" required>
-			</div>
-							<div>
-								Plan:
-								<select name="plan" class="form__input">
-									<option value="free" selected>free</option>
-									<option value="simple">simple</option>
-									<option value="pro">pro</option>
-								</select>
-							</div>
-			<div class="form__item">
-				<textarea name="massage" id="formMassage" class="form__input" placeholder="Повідомлення"></textarea>
-			</div>
-			<div class="form__item">
-				<label class="form__label" for="formTel">Як вам відповісти?</label>
-				<input class="form__input" id="formTel" name="tel" type="tel" placeholder="Номер телефона">
-			</div>
-			<div class="form__item">
-				<input type="text" id="formEmail" name="email" class="form__input" placeholder="Чи email">
-			</div>
+			<p class="form__item">
+				<label for="formName">- Ім'я, Прізвище</label>
+				<input id="formName" name="name" type="text" class="form__input" placeholder="- Ім'я, Прізвище"
+					title="Разрешено от 3 до 20 символов" pattern="[A-Za-z0-9а-яА-Я]{3,20}" required >
+			</p>
+			<p class="form__item">
+				<label for="dateOfBirth">- Дата народження</label>
+				<input id="dateOfBirth" name="name" type="text" class="form__input" placeholder="- Дата народження"
+					title="Разрешено от 3 до 20 символов" pattern="[A-Za-z0-9а-яА-Я]{3,20}" required >
+			</p>
+			<p class="form__item">
+				<span>- Стать:</span>
+				<br>
+				<label class="form__label" for="man">man</label>
+				<input type="radio" checked id="man" value="man" name="gender" class="form__input">
+				<label class="form__label" for="woman">woman</label>
+				<input type="radio" id="woman" value="woman" name="gender" class="form__input">
+			</p>
+			<p>
+				<span>- Місто :</span>
+				<br><br>
+				<select name="plan" class="form__input">
+					<option value="Jerusalem" selected>Jerusalem</option>
+					<option value="Morocco">Morocco</option>
+					<option value="Odessa">Odessa</option>
+				</select>
+			</p>
+			<p class="form__item">
+				<label class="form__label" for="adress">- Адреса</label>
+				<textarea name="massage" id="adress" class="form__input" placeholder="- Адреса">- Адреса</textarea>
+			</p>
+			<p class="form__item">
+				<span>- Мови, якими володіє:</span>
+				<br><br>
+				<label class="form__label" for="china">Китайский</label>
+				<input class="form__input" id="china" name="" type="checkbox">
+				<label class="form__label" for="inglish">Англиский</label>
+				<input class="form__input" id="inglish" name="tel" type="checkbox">
+			</p>
 			<button type="submit" class="form__button">Надіслати запит</button>
 		</form>
 	</div>
 	<script src="js-modules/homework-0030.js"></script>
 </body>
-
 </html>

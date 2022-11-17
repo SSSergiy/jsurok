@@ -60,7 +60,7 @@
 						<h1 class="form__title">Замовлення</h1>
 						<p class="form__item">
 							<input id="formName" name="inputFullname" type="text" required class="form__input" placeholder="Full name"
-								title="Разрешено от 3 до 20 символов" pattern="[A-Za-z]{3,20}" required>
+								title="Разрешено от 3 до 20 символов" pattern="[A-Za-zа-яА-Я]{3,20}" required>
 						</p>
 						<p>
 							City:
@@ -72,7 +72,7 @@
 						</p>
 						<p class="form__item">
 							<label class="form__label" for="formTell">- Склад Нової</label>
-							<input class="form__input" id="formTell" name="mailWarehouse" type="number" required pattern="[0-9]{3,20}">
+							<input class="form__input" id="formTell" name="mailWarehouse" type="number" min="1" required pattern="[0-9]{3,20}">
 						</p>
 						<p class="form__item">
 							- Спосіб оплати:
@@ -83,15 +83,15 @@
 						</p>
 						<p class="form__item">
 							<label class="form__label" for="formTelll">- Кількість продукції, що купується</label>
-							<input class="form__input" required id="formTelll" name="numberOfGoods" type="number" pattern="[0-9]{3,20}">
+							<input class="form__input" required id="formTelll" name="numberOfGoods" type="number" min="1" pattern="[0-9]{3,20}">
 						</p>
 						<button type="submit" class="form__button">Надіслати запит</button>
 					</form>
 				</div>
 			</div>
+			<section hidden></section>
 		</div>
 	</div>
-	<section hidden></section>
 	<script src="js-modules/homework-0029.js"></script>
 </body>
 

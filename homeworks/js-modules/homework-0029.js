@@ -218,8 +218,10 @@ function retrieveFormValue(event) {
   values.purchaseDate = new Date();
   values.orderPrice = +values.numberOfGoods * values.productPrice;
   const section = document.querySelector('section');
-  section.removeAttribute('hidden');
-  section.innerHTML = `<pre>${JSON.stringify(values)}<pre>`;
+	section.removeAttribute('hidden');
+	if (document.getElementById('error').innerText.length == '' ){
+		section.innerHTML = `<pre>${JSON.stringify(values)}<pre>`;
+	}
 }
 form.addEventListener('submit', retrieveFormValue);
 

@@ -7,11 +7,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<style>
+		        .wrapper {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        td {
+            height: 2rem;
+            width: 4rem;
+            border: 1px solid black;
+            text-align: center;
+        }
 		.form__input {
+			background: rgb(234, 255, 0);
 			padding: 1rem;
 			max-width:  100%;
 		}
 		form {
+			background: rgb(234, 255, 0);
+
 			max-width:  100%;
 		}
 		p {
@@ -24,26 +43,29 @@
 		}
 
 		body {
+			background: #1870bd;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
-	</style>
+	</style> 
 </head>
 
 <body>
-	<div class="form">
-		<form action="#" id="form" method="get"  class="form__body">
+	<div class="wrapper">
+		<div class="container">
+			<div class="form">
+		<form action="/" id="form" method="GET" class="form__body" name="form">
 			<h1 class="form__title">Ми хотіли б Вам допомогти</h1>
 			<p class="form__item">
 				<label for="formName">- Ім'я, Прізвище</label>
 				<input id="formName" name="firstNameLastName" type="text" class="form__input" placeholder="- Ім'я, Прізвище"
-					title="Разрешено от 3 до 20 символов" pattern="[A-Za-z0-9а-яА-Я]{3,20}" required >
+				 >
 			</p>
 			<p class="form__item">
 				<label for="dateOfBirth">- Дата народження</label>
 				<input id="dateOfBirth" name="data" type="text" class="form__input" placeholder="- Дата народження"
-					title="Разрешено от 3 до 20 символов" pattern="[A-Za-z0-9а-яА-Я]{3,20}" required >
+				 >
 			</p>
 			<p class="form__item">
 				<span>- Стать:</span>
@@ -64,7 +86,7 @@
 			</p>
 			<p class="form__item">
 				<label class="form__label" for="adress">- Адреса</label>
-				<textarea name="adress" id="adress" class="form__input" placeholder="- Адреса">Адреса</textarea>
+				<textarea name="ADRESS" id="adress" class="form__input" placeholder="- Адреса">Адреса</textarea>
 			</p>
 			<p class="form__item">
 				<span>- Мови, якими володіє:</span>
@@ -77,6 +99,9 @@
 			<button type="submit" class="form__button">Save</button>
 		</form>
 	</div>
+		</div>
+	</div>
 	<script src="js-modules/homework-0030.js"></script>
 </body>
+
 </html>

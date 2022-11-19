@@ -1381,4 +1381,6 @@ console.log(link.hidden);
 // 	<script src="js-modules/homework-0030.js"></script>
 // </body>
 // </html>
-// .toISOString().split('T')[0]
+// .toISOString().split('T')[0]   "Integer ac leo. Pellentesque ultrices mattis odio."
+// const productObj = products.find(el => el.description == messageHtml.innerHTML)
+// console.log(productObj);

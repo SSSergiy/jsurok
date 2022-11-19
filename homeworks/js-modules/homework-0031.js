@@ -30,6 +30,7 @@ const buttonHtml = document.querySelector('#buy-button');
 buttonHtml.style.visibility = 'hidden';
 const messageHtml = document.querySelector('#message');
 messageHtml.style.visibility = 'hidden';
+let productObj = "";
 
 function newTag(arr, id) {
   description.innerHTML = '';
@@ -65,10 +66,14 @@ document.querySelector('#products').addEventListener('click', (e) => {
   prodFunction(products, +e.target.dataset.productId);
 });
 
+
 buttonHtml.addEventListener('click', (e) => {
 	e.preventDefault();
   if (e.target.tagName === 'BUTTON') {
-    document.querySelector('.form').removeAttribute('hidden');
+		document.querySelector('.form').removeAttribute('hidden');
+		"Integer ac leo. Pellentesque ultrices mattis odio."
+     productObj = products.find(el => el.description === description.innerText)
+	
   }
 });
 
@@ -96,13 +101,15 @@ function retrieveFormValue(event) {
 				}
 			}
 		}
+		values.products= productObj;
+
 		values.productPrice = 250;
-		values.purchaseDate = new Date();
+		values.purchaseDate = new Date().toISOString().split('T')[0];
 		values.orderPrice = + values.numberOfGoods * values.productPrice;
 		if ( localStorage.getItem("values")) {                         // proverka lokalstorige na vmestitelstvo
 			let pars = Array.from(JSON.parse(localStorage.getItem("values")))
 			pars.push(values) 
-			console.log(pars);
+			// console.log(pars);
 			localStorage.setItem('values',JSON.stringify(pars))
 		} else {
 			localStorage.setItem('values', JSON.stringify([values]))

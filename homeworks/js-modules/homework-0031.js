@@ -1,4 +1,13 @@
-const categories = [{ id: 1, category: "Toys", }, { id: 2, category: "Sports", }, { id: 3, category: "Toys", }, { id: 4,   category: "Grocery", },{	id: 5,	category: "Garden",},];
+// Модифікувати інтернет-магазин таким чином,
+//  щоб була можливість переглянути всі збережені замовлення
+//   навіть після оновлення сторінки(використати localStorage).
+// На сторінці спочатку під списком категорій відображається також кнопка “Мої замовлення”.
+// При кліку на “Мої замовлення”:
+// - замість категорій відображається список усіх замовлень користувача (дата та сума)
+// - при кліку на замовлення в середній частині відображаються деталі замовлення.
+// - в правій частині відображаються дані про товар з замовлення
+// Також реалізувати можливість видалення замовлення зі списку.
+const categories = [{ id: 1, category: "Toys", }, { id: 2, category: "Sports", }, { id: 3, category: "Toys", }, { id: 4, category: "Grocery", }, { id: 5, category: "Garden", },];
 const products = [
 {id: 1,  category_id: 2,  name: "Eggplant - Asian",               description: "Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",},
 {id: 2,  category_id: 5,  name: "Jagermeister",                   description: "Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",},
@@ -14,4 +23,91 @@ const products = [
 {id: 12, category_id: 4,  name: "Napkin White",                   description: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",},
 {id: 13, category_id: 2,  name: "Oil - Truffle, White",           description: "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",},
 {id: 14, category_id: 5,  name: "Wine - Puligny Montrachet A.",   description: "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.",},
-{id: 15, category_id: 5,  name: "Tomatoes Tear Drop",             description: "Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",},];
+{id: 15, category_id: 5,  name: "Tomatoes Tear Drop",             description: "Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.", },];
+const productsHtml = document.querySelector('#products');
+const description = document.querySelector('#description');
+const buttonHtml = document.querySelector('#buy-button');
+buttonHtml.style.visibility = 'hidden';
+const messageHtml = document.querySelector('#message');
+messageHtml.style.visibility = 'hidden';
+
+function newTag(arr, id) {
+  description.innerHTML = '';
+  buttonHtml.style.visibility = 'hidden';
+  productsHtml.replaceChildren();
+  for (const index of arr) {
+    if (index.category_id === id) {
+      const li = document.createElement('li');
+      li.setAttribute('data-product-id', `${index.id}`);
+      li.innerHTML = index.name;
+      li.className = 'link';
+      productsHtml.prepend(li);
+    }
+  }
+}
+
+function prodFunction(arr, id) {
+  buttonHtml.style.visibility = 'visible';
+  for (const index of arr) {
+    if (index.id === id) {
+      description.innerHTML = index.description;
+    }
+  }
+}
+
+document.querySelector('#categories').addEventListener('click', (e) => {
+		e.preventDefault();
+  newTag(products, +e.target.dataset.categoryId);
+});
+
+document.querySelector('#products').addEventListener('click', (e) => {
+	e.preventDefault();
+  prodFunction(products, +e.target.dataset.productId);
+});
+
+buttonHtml.addEventListener('click', (e) => {
+	e.preventDefault();
+  if (e.target.tagName === 'BUTTON') {
+    document.querySelector('.form').removeAttribute('hidden');
+  }
+});
+
+form.addEventListener('submit', retrieveFormValue);
+function retrieveFormValue(event) {
+	const formName = document.getElementById('formName').value;
+	const mailWarehouse = document.getElementById('mailWarehouse').value;
+	const numberOfGoods = document.getElementById('numberOfGoods').value;
+	let errors = document.getElementById('error')
+	if ( formName.length < 1 || mailWarehouse.length < 1 || numberOfGoods.length < 1) {
+		errors.innerText = 'nevsi polia zapovneti';
+	} else {
+		errors.innerText = '';
+		const isCheckboxOrRadio = (type) => ['checkbox', 'radio'].includes(type);
+		const { form } = document.forms;
+		event.preventDefault();
+		let values = {};
+		for (let field of form) {
+			const { type, checked, value ,name } = field;
+			if (name) {
+				if (isCheckboxOrRadio(type)) {
+					values[value]= checked
+				} else {
+					values[name] = value
+				}
+			}
+		}
+		values.productPrice = 250;
+		values.purchaseDate = new Date();
+		values.orderPrice = + values.numberOfGoods * values.productPrice;
+		if ( localStorage.getItem("values")) {                         // proverka lokalstorige na vmestitelstvo
+			let pars = Array.from(JSON.parse(localStorage.getItem("values")))
+			pars.push(values) 
+			console.log(pars);
+			localStorage.setItem('values',JSON.stringify(pars))
+		} else {
+			localStorage.setItem('values', JSON.stringify([values]))
+		}
+	}
+}
+
+

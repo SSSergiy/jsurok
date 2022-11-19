@@ -79,26 +79,25 @@
 
 // console.log(a(listOfLists));
 
-const btn = document.querySelector('#button');
-console.log(btn);
-const inp = document.querySelector('input')
-console.log(inp.value.split('/')[0])
+// const btn = document.querySelector('#button');
+// console.log(btn);
+// const inp = document.querySelector('input')
+// console.log(inp.value.split('/')[0])
 
-function goToUrl (){
-    let d = 'https://'
-    if(inp.value.split(':')[0] ==='https' || inp.value.split(':')[0] ==='http'){
-			console.log(inp.value);
-			location.href = inp.value
-    } else{
+// function goToUrl (){
+//     let d = 'https://'
+//     if(inp.value.split(':')[0] ==='https' || inp.value.split(':')[0] ==='http'){
+// 			console.log(inp.value);
+// 			location.href = inp.value
+//     } else{
         
-				location.href = d + inp.value
-    }
+// 				location.href = d + inp.value
+//     }
 
-}
-btn.addEventListener('click', (e) => {
-    goToUrl()
-});
-=======
+// }
+// btn.addEventListener('click', (e) => {
+//     goToUrl()
+// });
 
 
 // const btn = document.querySelector('#button');

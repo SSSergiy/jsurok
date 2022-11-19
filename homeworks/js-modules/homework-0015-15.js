@@ -1,102 +1,103 @@
-// Эта дз состоит из четырех небольших задач, за реализацию каждой из них можно получить 25 баллов:
-
-// -Дан массив с элементами разных типов.
-//  Создать функцию которая высчитывает среднее арифметическое
-//  только числовых элементов данного массива.
-
-// const array = [1, NaN, 3, 6, 7, 4, 'oien', 2, 'ooien', 5, 'oien'];
-// function example(arr) {
-//   let amountInt = 0;
-//   let summa = 0;
-// 	for (let i = 0; i < arr.length; i++) {
-// 		if (!isNaN(arr[i])) {
-// 			amountInt++;
-// 			summa += arr[i];
-//     }
-//     var resalt = summa / amountInt;
-// 	}
-// 	return resalt;
-// }
-// console.log(example(array));
-
-// -Написать функцию doMath(x, znak, y),
-// которая получает 3 аргумента: числа x и y,
-// 	строку znak.В переменной znak может быть: +, -, *, /, %, ^ (степень).
-// 	 Вывести результат математического действия, указанного в переменной znak.
-// 	 Оба числа и знак получаются от пользователя.
-// function calcc(x, y, znak) {
-//   x = +prompt('первое число');
-//   y = +prompt('второе число');
-//   znak = prompt('оператор (/,+,*,-,^,%)');
-// 	result = 0;
-//   if (znak === '-') {
-// 		result = x - y;
-// 		return result;
-//   }
-//   if (znak === '*') {
-// 		result = x * y;
-// 		return result;
-//   }
-//   if (znak === '/') {
-// 		result = x / y;
-// 		return result;
-//   }
-//   if (znak === '^') {
-// 		result = x ** y;
-// 		return result;
-//   }
-//   if (znak === '+') {
-// 		result = x + y;
-// 		return result;
-// 	}
-// 	else (znak === '%')
-//   result = x % y;
-//   return result;
-// }
-// console.log(calcc());
-
-// -Написать функцию заполнения пользовательскими данными двумерного массива.
-// Длину основного массива и внутренних массивов задаёт пользователь.
-// Значения всех элементов всех массивов задаёт пользователь.
-
-// function arrAdd() {
-// 	let arr = [];
-// 	let amount = +prompt("Введите количество елементов в первом массиве");
-// 	for (let i = 0; i < amount; i++) {
-// 		let vn = +prompt("znachenie");
-// 		arr.push([vn]);
-// 	}
-// 	for(let i = 0; i < amount; i++) {
-// 			let amount2 = +prompt("Введите количество елементов в " + (i + 1) + " массиве");
-// 		for (let i = 0; i < amount2; i++) {
-// 		let vv = +prompt("znachenie");
-// 				arr[i].push([vv]);
-// 			}
-// 	}
-// 	console.log(arr);
-// }
-// let functionResult = arrAdd();
+// -Дан масив з елементами різних типів. Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.
+const arr = [1, 3, 5, 'r', 'y', 'b', 7, 'e', 48, 50]
+function numberSum () {
+   let sum = 0;
+   let numberArray = arr.reduce((b, el) => {
+      if (!(Number.isNaN(+el))) {
+         b.push(el)
+      }
+      return b
+   }, [])
+   for (let i = 0; i < numberArray.length; i++) {
+      sum += numberArray[i]
+   }
+   return sum / numberArray.length
+}
+console.log(numberSum())
+// Написати функцію doMath(x, znak, y), яка отримує 3 аргументи: числа x і y, рядок znak. У змінній znak може бути: +, -, *, /, %, ^ (ступінь ).
+// Вивести результат математичної дії, вказаної в змінній znak.Обидва числа і знак виходять від користувача.
+let mathSigns = prompt("Що Вам потрібно зробити? \n ' + ' - додавання \n ' - ' - віднімання \n ' * '- множення \n ' / ' - ділення \n ' % ' - Скільки відсотків від числа 1 складає число 2 \n ' ^ ' - піднесення першого числа до степеня(число 2)")
+let twoNumber = +prompt('Введіть перше число');
+let oneNumber = +prompt('Введіть друге число');
+const calculator = function doMath(x, znak, y) {
+   switch (znak) {
+      case "+":
+      case "-":
+      case "/":
+      case "*":
+         alert(`${x} ${znak} ${y} = ` + eval(`${x} ${znak} ${y}`));
+         return `${x} ${znak} ${y} = ` + eval(`${x} ${znak} ${y}`);
+      case "%":
+         alert(`${y} від ${x} = ${(y / x) * 100}%`);
+         return `${y} від ${x} = ${(y / x) * 100}%`;
+      case "^":
+         alert(`${x} в степені ${y} = ${Math.pow(x, y)}`);
+         return `${x} в степені ${y} = ${Math.pow(x, y)}`;
+   }
+}
+console.log(calculator(oneNumber, mathSigns, twoNumber))
 ///////////////////////////////////////////////////////////////////////////////////
-//  const mainN = prompt('Введите длину главного массива');
-//  const subN = prompt('Введите длину внутренних массивов');
-//  const arr = new Array(+mainN).fill(0)
-//    .map((_, ind) =>
-//      new Array(+subN).fill(0).map((_, i) => prompt(`Введите элемент ${i} в подмассиве ${ind}`)));
-//  alert('Ваш массив:' + arr.map(subArr => '\n' + subArr));
-////////////////////////////////////////////////////////////////////////////////////////////////////
+// Написати функцію заповнення даними користувача двомірного масиву. 
+// Довжину основного масиву і внутрішніх масивів задає користувач. Значення всіх елементів всіх масивів задає користувач.
+function dataArray() {
+	let elArrayOne;
+	let elArrayTwo;
+	let twoArray = []
+	let result1 = [];
+	let i = 0;
+	let r = 0;
+	do {
+		elArrayOne = prompt(`Введіть елемент масиву.\n 
+		 Якщо хочете створити вкладений масив єлементів введіть ' ++ '`);
+		 if (elArrayOne === null) {
+				break
+		 } else if (!(isNaN(+elArrayOne))) {
+				elArrayOne = Number(elArrayOne)
+		 }
+		 result1.push(elArrayOne);
+		 i++;
+		 if (elArrayOne === '++') {
+				twoArray = []
+				do {
+					elArrayTwo = prompt(`Введіть елемент Вашого вкладеного масиву.\n 
+					 Якщо хочете завершити ввод єлементів в даний масив і
+					 повернутись до основного масиву натисніть 'Відміна'`)
+					 if (elArrayTwo === null) {
+							break
+					 } else if (!(isNaN(+elArrayTwo))) {
+							elArrayTwo = Number(elArrayTwo)
+					 }
+					 twoArray.push(elArrayTwo);
+					 
+					 r++;
+					 
+				} while (elArrayTwo !== null)
 
-// -Создать функцию, которая убирает из строки все символы,
-// которые мы передали вторым аргументом. 'func("hello world", ['l', 'd'])' вернет нам "heo wor".
-// Исходную строку и символы для удаления задаёт пользователь
-// function func (a, b) {
-// 	let ggg = a.split('');
-// 	for(let i = 0; i<b.length; i++){
-// 			for(let j = 0; j<a.length; j++) {
-// 					if(b[i] == a[j]){
-// 							ggg.splice(ggg.indexOf(b[i]),1)
-// 					};
-// 			}
-// 	}
-// 	console.log(ggg.join(''));
-// };
-// func('hello world', ['l', 'd']);
+				result1.push(twoArray)
+		 }
+		 result1 = result1.filter(symbol2 => symbol2 !== "++")
+	} while (elArrayOne !== null)
+	console.log (result1)
+}
+dataArray()
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// -Створити функцію, яка прибирає з рядка всі символи, які ми передали другим аргументом. 
+// 'func(" hello world", ['l', 'd'])' поверне нам "heo wor".
+// let inputString = prompt("Введіть рядок");
+// let inputSymbol;
+// let symbol = [];
+// let i1 = 0;
+// do {
+//    inputSymbol = prompt(`Введіть символ для видалення з рядка`);
+//    symbol.push(inputSymbol);
+//    i1++;
+// } while (inputSymbol !== null);
+
+// function delSymbol(string, elString) {
+//    let stringArray = [...string];
+//    return stringArray.filter(item => !elString.includes(item)).join('');
+// }
+
+// console.log(delSymbol(inputString, symbol))

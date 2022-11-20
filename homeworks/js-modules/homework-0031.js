@@ -211,7 +211,7 @@ function retrieveFormValue(event) {
   }
 }
 
-function addtableHtml(params) {
+function addtableHtml(params) {   ///add table
 	if (Object.keys(params).length) {
 		const productsHtmll = document.querySelector('#product');
 		productsHtmll.replaceChildren()
@@ -230,51 +230,106 @@ function addtableHtml(params) {
 		}
 	}
 }
+function addtableHtmll(obj) {   ///add table
+	if (Object.keys(obj).length) {
+		const descriptionss = document.querySelector("#descriptions")
+		descriptionss.replaceChildren()
+		const lii = document.createElement('li');
+		descriptionss.append(lii);
+		const addTable = document.createElement('table');
+		lii.append(addTable)
+		for (const key in obj) {
+			const rowTable = addTable.insertRow();
+			rowTable.insertCell().innerText = key;
+			if (!obj[key]) {
+				rowTable.insertCell().innerText = obj[key];
+			} if (obj[key]) {
+				rowTable.insertCell().innerText = obj[key];
+			}
+		}
+	}
+}
 
 document.querySelector('.my-categories-btn').addEventListener('click', (e) => {
-  e.preventDefault();
+	e.preventDefault();
+	
   const delCategoriesBtn = document.querySelector('.del-categories-btn');
   const arr = document.querySelectorAll('[data-category-id]');
-  arr.forEach((item, i) => {
+  arr.forEach((item) => {
     if (item.innerHTML.length > 0) {
       item.innerHTML = '';
     }
   });
-  const table = document.querySelector('.order-list');
-  let pars;
-  if (localStorage.getItem('values')) {
-    pars = Array.from(JSON.parse(localStorage.getItem('values')));
-  }
-  const tableElement = document.querySelector('.order-list');
-  const addTable = document.createElement('table');
-  pars.forEach((item) => {
-    const rowTable = addTable.insertRow();
-    rowTable.insertCell().innerText = `purchaseDate ${item.purchaseDate}`;
-    rowTable.insertCell().innerText = `orderPrice ${item.orderPrice}`;
-    tableElement.append(addTable);
-  });
+	const table = document.querySelector('.order-list');
+	if (table.childNodes) {
+		table.replaceChildren()
+		let pars;
+		if (localStorage.getItem('values')) {
+			pars = Array.from(JSON.parse(localStorage.getItem('values')));
+		}
+		const tableElement = document.querySelector('.order-list');
+		const addTable = document.createElement('table');
+		pars.forEach((item) => {                         ///add table and content
+			const rowTable = addTable.insertRow();
+			rowTable.insertCell().innerText = `purchaseDate ${item.purchaseDate}`;
+			rowTable.insertCell().innerText = `orderPrice ${item.orderPrice}`;
+			tableElement.append(addTable);
+		});
+		tableElement.addEventListener('click', (e) => {   //clic in table
+			e.preventDefault();
+			console.log(e.target.classList.toggle('yello'));
+			
+			let pars;
+			if (e.target.innerText.split(' ')[0] === 'purchaseDate') {
+				if (e.target.parentNode.tagName === "TR") {
+					if (!e.target.classList.toggle('yello')) {
+						const yelloClass = document.querySelectorAll(".yello")
+						yelloClass.forEach((item) => {
+							if (item.classList.toggle('yello')) {
+								item.classList.remove('yello')
+							}
+						})
+					}
+					e.target.parentNode.classList.add('yello');
+					if (localStorage.getItem('values')) {
+						pars = Array.from(JSON.parse(localStorage.getItem('values')));
+						const values = pars.find(el => el.purchaseDate === e.target.innerText.split(' ')[1])
+						addtableHtml(values)
+						let clone = {}
+						for (let key in values.product) {
+							clone[key]=values.product[key]
+						}
+						addtableHtmll(clone)
+					 return
+					}
+				}
+			}
+			if (e.target.innerText.split(' ')[0] === 'orderPrice') {
+				if (e.target.parentNode.tagName === "TR") {
+					if (!e.target.classList.toggle('yello')) {
+						const yelloClass = document.querySelectorAll(".yello")
+						yelloClass.forEach((item) => {
+							if (item.classList.toggle('yello')) {
+								item.classList.remove('yello')
+							}
+						})
+					}
 
-  tableElement.addEventListener('click', (e) => {
-    e.preventDefault();
-    let pars;
-    if (e.target.innerText.split(' ')[0] === 'purchaseDate') {
-      e.target.parentNode.classList.add('yello');
-      if (localStorage.getItem('values')) {
-        pars = Array.from(JSON.parse(localStorage.getItem('values')));
-				const values = pars.find(el => el.purchaseDate === e.target.innerText.split(' ')[1])
-				addtableHtml(values)
-       return
-      }
-    }
-    if (e.target.innerText.split(' ')[0] === 'orderPrice') {
-      e.target.parentNode.classList.add('yello');
-      if (localStorage.getItem('values')) {
-        pars = Array.from(JSON.parse(localStorage.getItem('values')));
-				const values = pars.find(el => el.purchaseDate === e.target.previousSibling.innerText.split(' ')[1])
-				addtableHtml(values)
-       return
-      }
-    }
-  });
+					e.target.parentNode.classList.add('yello');
+					if (localStorage.getItem('values')) {
+						pars = Array.from(JSON.parse(localStorage.getItem('values')));
+						const values = pars.find(el => el.purchaseDate === e.target.previousSibling.innerText.split(' ')[1])
+						addtableHtml(values)
+						let clone = {}
+						for (let key in values.product) {
+							clone[key] = values.product[key]
+						}
+						addtableHtmll(clone)
+						return
+					}
+				}
+			}
+		});
+	}
 });
 

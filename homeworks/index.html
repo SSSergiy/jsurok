@@ -23,27 +23,40 @@
 		ul {
 			list-style-type: none;
 		}
-		.yello:checked{
+
+		.yello:checked {
 			background-color: firebrick;
 		}
-		.yello{
+
+		.yello {
 			background-color: firebrick;
 		}
 
-		.order-list{
-		width: 100%;
+		.order-list {
+			width: 100%;
 		}
-		tr{
-	border: 1px solid firebrick;
+
+		tr {
+			height: 30px;
+
+			width: 100px;
+			border: 1px solid firebrick;
 
 		}
-		td{
-	border: 1px solid firebrick;
+
+		td {
+			width: 50px;
+			border: 1px solid firebrick;
+			padding: 10px;
+
 
 		}
-table{
-	border: 1px solid firebrick;
-}
+
+		table {
+			border: 1px solid firebrick;
+			width: 100px;
+		}
+
 		li {
 			padding: 0.5rem;
 			cursor: pointer;
@@ -82,10 +95,11 @@ table{
 				<button id="buy-button">Buy</button>
 				<div id="message">The product has been added to the basket</div>
 				<div class="form" hidden>
-					<form action="/" id="form" method="GET" class="form__body"  name="form">
+					<form action="/" id="form" method="GET" class="form__body" name="form">
 						<h1 class="form__title">Замовлення</h1>
 						<p class="form__item">
-							<input id="formName" name="inputFullname" value="Sergiy" type="text" class="form__input" placeholder="Full name">
+							<input id="formName" name="inputFullname" value="Sergiy" type="text" class="form__input"
+								placeholder="Full name">
 						</p>
 						<p>
 							City:

@@ -202,7 +202,6 @@ function retrieveFormValue(event) {
     values.purchaseDate = new Date().toISOString();
     values.orderPrice = +values.numberOfGoods * values.productPrice;
     if (localStorage.getItem('values')) {
-      // proverka lokalstorige na vmestitelstvo
       let pars = Array.from(JSON.parse(localStorage.getItem('values')));
       pars.push(values);
       localStorage.setItem('values', JSON.stringify(pars));
@@ -210,6 +209,26 @@ function retrieveFormValue(event) {
       localStorage.setItem('values', JSON.stringify([values]));
     }
   }
+}
+
+function addtableHtml(params) {
+	if (Object.keys(params).length) {
+		const productsHtmll = document.querySelector('#product');
+		productsHtmll.replaceChildren()
+		const lii = document.createElement('li');
+		const addTable = document.createElement('table');
+		productsHtmll.append(lii);
+		lii.append(addTable)
+		for (const key in params) {
+			const rowTable = addTable.insertRow();
+			rowTable.insertCell().innerText = key;
+			if (!params[key]) {
+				rowTable.insertCell().innerText = params[key];
+			} if (params[key]) {
+				rowTable.insertCell().innerText = params[key];
+			}
+		}
+	}
 }
 
 document.querySelector('.my-categories-btn').addEventListener('click', (e) => {
@@ -238,49 +257,24 @@ document.querySelector('.my-categories-btn').addEventListener('click', (e) => {
   tableElement.addEventListener('click', (e) => {
     e.preventDefault();
     let pars;
-    // console.log(e.target.innerText.split(" ")[1]);
     if (e.target.innerText.split(' ')[0] === 'purchaseDate') {
       e.target.parentNode.classList.add('yello');
-      // console.log(e.target.innerText.split(' ')[1]);
       if (localStorage.getItem('values')) {
         pars = Array.from(JSON.parse(localStorage.getItem('values')));
-				// console.log(pars);
 				const values = pars.find(el => el.purchaseDate === e.target.innerText.split(' ')[1])
-       console.log(values);
+				addtableHtml(values)
        return
-				
       }
     }
     if (e.target.innerText.split(' ')[0] === 'orderPrice') {
       e.target.parentNode.classList.add('yello');
-      // console.log(e.target.previousSibling.innerText.split(' ')[1]);
       if (localStorage.getItem('values')) {
         pars = Array.from(JSON.parse(localStorage.getItem('values')));
-				// console.log(pars);
 				const values = pars.find(el => el.purchaseDate === e.target.previousSibling.innerText.split(' ')[1])
-       console.log(values);
+				addtableHtml(values)
        return
       }
     }
   });
 });
-// purchaseDate
-// let pars;
-// if ( localStorage.getItem("values")) {
-// 	 pars = Array.from(JSON.parse(localStorage.getItem("values")))
-// }
-// console.log(pars);
-// const values = pars.find(el => el.purchaseDate === "2022-11-20T01:43:30.161Z")
-// console.log(values);
-// return
-// }
-// console.log(e.target.previousSibling.innerText.split(" ")[1]);
-// let pars;
-// if ( localStorage.getItem("values")) {
-// 	 pars = Array.from(JSON.parse(localStorage.getItem("values")))
-// }
-// console.log(pars);
-// const values = pars.find(el => el.purchaseDate === "2022-11-20T01:43:30.161Z")
-// console.log(values);
-// return
-// }
+

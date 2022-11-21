@@ -120,6 +120,7 @@ const products = [
       'Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.'
   }
 ];
+const deleteBtn = document.querySelector(".del-categories-btn")
 const productsHtml = document.querySelector('#products');
 const description = document.querySelector('#description');
 const buttonHtml = document.querySelector('#buy-button');
@@ -277,8 +278,7 @@ document.querySelector('.my-categories-btn').addEventListener('click', (e) => {
 		});
 		tableElement.addEventListener('click', (e) => {   //clic in table
 			e.preventDefault();
-			console.log(e.target.classList.toggle('yello'));
-			
+			e.target.classList.toggle('yello');
 			let pars;
 			if (e.target.innerText.split(' ')[0] === 'purchaseDate') {
 				if (e.target.parentNode.tagName === "TR") {
@@ -314,7 +314,6 @@ document.querySelector('.my-categories-btn').addEventListener('click', (e) => {
 							}
 						})
 					}
-
 					e.target.parentNode.classList.add('yello');
 					if (localStorage.getItem('values')) {
 						pars = Array.from(JSON.parse(localStorage.getItem('values')));
@@ -333,3 +332,19 @@ document.querySelector('.my-categories-btn').addEventListener('click', (e) => {
 	}
 });
 
+deleteBtn.addEventListener('click', (e) => {   //clic in table
+	if (e.target.innerText === "“удалить МоЕ замовлення”") {
+		const deleteClases = document.querySelectorAll(".yello")
+		let pars;
+		let values
+		deleteClases.forEach((item) => {
+			if ((item.innerText.split(' ')[0] === "purchaseDate")) {
+				pars = Array.from(JSON.parse(localStorage.getItem('values')));
+				values = pars.filter(function (number) {
+					return number.purchaseDate !== item.innerText.split('Z')[0].split(' ')[1]+"Z";
+				});
+				localStorage.setItem("values", JSON.stringify(values))
+			}
+		})
+	}
+})

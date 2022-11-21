@@ -81,11 +81,7 @@ function retrieveFormValue(event) {
   const mailWarehouse = document.getElementById('mailWarehouse').value;
   const numberOfGoods = document.getElementById('numberOfGoods').value;
   let errors = document.getElementById('error');
-  if (
-    formName.length < 1 ||
-    mailWarehouse.length < 1 ||
-    numberOfGoods.length < 1
-  ) {
+  if (formName.length < 1 || mailWarehouse.length < 1 ||numberOfGoods.length < 1) {
     errors.innerText = 'nevsi polia zapovneti';
   } else {
     errors.innerText = '';
@@ -156,9 +152,7 @@ function addtableHtmll(obj) {   ///add table
 		}
 	}
 }
-
-
-function fe(e){
+function functionClicer(e){
 	e.preventDefault();
 	if (localStorage.getItem('values') !== "[]") {
 		document.querySelector('.form').classList.add("none");
@@ -239,7 +233,7 @@ function fe(e){
 		}
 	}
 }
-const btnDeleteCategories = document.querySelector('.my-categories-btn').addEventListener('click',  fe);
+const btnDeleteCategories = document.querySelector('.my-categories-btn').addEventListener('click',  functionClicer);
 
 deleteBtn.addEventListener('click', (e) => {   //clic in table
 
@@ -257,7 +251,7 @@ deleteBtn.addEventListener('click', (e) => {   //clic in table
 			}
 		})
 	}
-	fe(e)
+	functionClicer(e)
 	const table = document.querySelector('.order-list');
 	const productsHtmll = document.querySelector('#product');
 	const descriptionss = document.querySelector("#descriptions")

@@ -72,6 +72,7 @@ buttonHtml.addEventListener('click', (e) => {
   e.preventDefault();
   if (e.target.tagName === 'BUTTON') {
     document.querySelector('.form').removeAttribute('hidden');
+    document.querySelector('.form').classList.remove("none");
   }
 });
 form.addEventListener('submit', retrieveFormValue);
@@ -160,11 +161,11 @@ function addtableHtmll(obj) {   ///add table
 function fe(e){
 	e.preventDefault();
 	if (localStorage.getItem('values') !== "[]") {
+		document.querySelector('.form').classList.add("none");
   const arr = document.querySelectorAll('[data-category-id]');
   arr.forEach((item) => {
     if (item.innerHTML.length > 0) {
       item.classList.add("none");
-      // item.toggleAttribute("hidden");
     }
   });
 	const table = document.querySelector('.order-list');

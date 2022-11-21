@@ -154,7 +154,13 @@ function addtableHtmll(obj) {   ///add table
 }
 function functionClicer(e){
 	e.preventDefault();
+	let messages = "";
+	if (localStorage.getItem('values') === "[]") {
+		 messages = document.querySelector('.produc').innerHTML = "Zamovlen sche namae";
+	}
 	if (localStorage.getItem('values') !== "[]") {
+		messages = document.querySelector('.produc').innerHTML = "";
+
 		document.querySelector('.form').classList.add("none");
   const arr = document.querySelectorAll('[data-category-id]');
   arr.forEach((item) => {

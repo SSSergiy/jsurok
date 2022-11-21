@@ -1384,3 +1384,4 @@ console.log(link.hidden);
 // .toISOString().split('T')[0]   "Integer ac leo. Pellentesque ultrices mattis odio."
 // const productObj = products.find(el => el.description == messageHtml.innerHTML)
 // console.log(productObj);
+/^\d{2}(-?)\d{2}\1\d{2}\1\d{2}$/

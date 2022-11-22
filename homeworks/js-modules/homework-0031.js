@@ -174,6 +174,7 @@ function functionClicer(e){
 	e.preventDefault();
 	if (localStorage.getItem('values') === "[]"|| localStorage.getItem('key') === null) {
 		document.querySelector('.produc').innerHTML = "Zamovlen sche namae";
+		return
 	}
 	if (localStorage.getItem('key') !== null||localStorage.getItem('values') !== "[]") {
 		document.querySelector('.produc').innerHTML = "";

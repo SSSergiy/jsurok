@@ -60,7 +60,6 @@ function prodFunction(arr, id) {
     }
   }
 }
-console.log(document.querySelector('#products').children.length);
 document.querySelector('#categories').addEventListener('click', (e) => {
 	e.preventDefault();
 	if (e.target.parentNode.id ==="categories") {
@@ -74,8 +73,7 @@ document.querySelector('#categories').addEventListener('click', (e) => {
 });
 document.querySelector('#products').addEventListener('click', (e) => {
 	e.preventDefault();
-	// if (document.querySelector('#products').childNodes) {
-	// }
+
 	if (e.target.parentNode.id === "products") {
 		document.querySelector('.form').classList.add("none");
 		document.getElementById('error').innerText = '';

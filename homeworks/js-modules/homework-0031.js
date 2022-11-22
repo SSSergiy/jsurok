@@ -172,11 +172,10 @@ function addtableHtmll(obj) {   ///add table
 }
 function functionClicer(e){
 	e.preventDefault();
-	if (localStorage.getItem('values') === "[]"|| localStorage.getItem('key') === null) {
+	if (localStorage.getItem('values') === "[]"|| localStorage.getItem('Key') === null) {
 		document.querySelector('.produc').innerHTML = "Zamovlen sche namae";
-		
 	}
-	if (localStorage.getItem('key') !== null||localStorage.getItem('values') !== "[]") {
+	if (localStorage.getItem('Key') !== null||localStorage.getItem('values') !== "[]") {
 		document.querySelector('.produc').innerHTML = "";
 		document.querySelector('.form').classList.add("none");
 		const arr = document.querySelectorAll('[data-category-id]');

@@ -60,19 +60,37 @@ function prodFunction(arr, id) {
     }
   }
 }
+console.log(document.querySelector('#products').children.length);
 document.querySelector('#categories').addEventListener('click', (e) => {
-  e.preventDefault();
+	e.preventDefault();
+	if (e.target.parentNode.id ==="categories") {
+		document.querySelector('.form').classList.add("none");
+		document.getElementById('error').innerText = '';
+		if (document.querySelector('#products').children.length) {
+			document.querySelector('.produc').innerHTML = "";
+		}
+	}
   newTag(products, +e.target.dataset.categoryId);
 });
 document.querySelector('#products').addEventListener('click', (e) => {
-  e.preventDefault();
+	e.preventDefault();
+	// if (document.querySelector('#products').childNodes) {
+	// }
+	if (e.target.parentNode.id === "products") {
+		document.querySelector('.form').classList.add("none");
+		document.getElementById('error').innerText = '';
+		if (document.querySelector('#products').children.length) {
+			document.querySelector('.produc').innerHTML = "";
+		}
+	}
   prodFunction(products, +e.target.dataset.productId);
 });
+
 buttonHtml.addEventListener('click', (e) => {
   e.preventDefault();
   if (e.target.tagName === 'BUTTON') {
     document.querySelector('.form').removeAttribute('hidden');
-    document.querySelector('.form').classList.remove("none");
+    document.querySelector('.form').classList.remove("none");//////////////////////////////////////////////
   }
 });
 form.addEventListener('submit', retrieveFormValue);
@@ -85,6 +103,8 @@ function retrieveFormValue(event) {
     errors.innerText = 'nevsi polia zapovneti';
   } else {
     errors.innerText = '';
+		errors.innerText = 'Zakak pruniato';
+		
     const isCheckboxOrRadio = (type) => ['checkbox', 'radio'].includes(type);
     const { form } = document.forms;
     event.preventDefault();
@@ -154,22 +174,20 @@ function addtableHtmll(obj) {   ///add table
 }
 function functionClicer(e){
 	e.preventDefault();
-	let messages = "";
-	if (localStorage.getItem('values') === "[]") {
-		 messages = document.querySelector('.produc').innerHTML = "Zamovlen sche namae";
+	if (localStorage.getItem('values') === "[]"|| localStorage.getItem('key') === null) {
+		document.querySelector('.produc').innerHTML = "Zamovlen sche namae";
 	}
-	if (localStorage.getItem('values') !== "[]") {
-		messages = document.querySelector('.produc').innerHTML = "";
-
+	if (localStorage.getItem('key') !== null||localStorage.getItem('values') !== "[]") {
+		document.querySelector('.produc').innerHTML = "";
 		document.querySelector('.form').classList.add("none");
-  const arr = document.querySelectorAll('[data-category-id]');
-  arr.forEach((item) => {
-    if (item.innerHTML.length > 0) {
-      item.classList.add("none");
-    }
-  });
-	const table = document.querySelector('.order-list');
-	if (table.childNodes) {
+		const arr = document.querySelectorAll('[data-category-id]');
+		arr.forEach((item) => {
+			if (item.innerHTML.length > 0) {
+				item.classList.add("none");
+			}
+		});
+	  const table = document.querySelector('.order-list');
+	 if (table.childNodes) {
 		table.replaceChildren()
 		let pars;
 		if (localStorage.getItem('values')) {
@@ -239,7 +257,8 @@ function functionClicer(e){
 		}
 	}
 }
-const btnDeleteCategories = document.querySelector('.my-categories-btn').addEventListener('click',  functionClicer);
+const btnDeleteCategories = document.querySelector('.my-categories-btn')
+	.addEventListener('click', functionClicer);
 
 deleteBtn.addEventListener('click', (e) => {   //clic in table
 
@@ -272,3 +291,5 @@ deleteBtn.addEventListener('click', (e) => {   //clic in table
 
 	}
 })
+
+

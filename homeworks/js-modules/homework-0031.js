@@ -170,13 +170,13 @@ function addtableHtmll(obj) {   ///add table
 		}
 	}
 }
-// console.log( localStorage.;
+console.log(localStorage.getItem('values') === null);
 function functionClicer(e) {
 	e.preventDefault()
-	if (localStorage.getItem("values").length === 2 || localStorage.getItem('values') === null) {
-		localStorage.clear()
+	if (localStorage.getItem('values') === null) {
 		document.querySelector('.produc').innerHTML = "Zamovlen sche namae";
 	}
+	
 
 	if (localStorage.getItem("values") !== null) {
 		document.querySelector('.produc').innerHTML = "";
@@ -266,6 +266,10 @@ const btnDeleteCategories = document.querySelector('.my-categories-btn')
 deleteBtn.addEventListener('click', (e) => {   //clic in table
 
 	if (e.target.innerText === "“удалить МоЕ замовлення”") {
+		if (localStorage.getItem("values").length <= 2) {
+		localStorage.clear()
+	
+	  }
 		const deleteClases = document.querySelectorAll(".yello")
 		let pars;
 		let values
@@ -284,14 +288,18 @@ deleteBtn.addEventListener('click', (e) => {   //clic in table
 	const productsHtmll = document.querySelector('#product');
 	const descriptionss = document.querySelector("#descriptions")
 	if (localStorage.getItem('values') === "[]") {
-		table.replaceChildren()
-		productsHtmll.replaceChildren()
-		descriptionss.replaceChildren()
-		const arr = document.querySelectorAll('[data-category-id]');
-		arr.forEach((item) => {
+		if (localStorage.getItem("values").length <= 2) {
+			localStorage.clear()
+		
+			
+			table.replaceChildren()
+			productsHtmll.replaceChildren()
+			descriptionss.replaceChildren()
+			const arr = document.querySelectorAll('[data-category-id]');
+			arr.forEach((item) => {
 				item.classList.remove("none");
-		});
-
+			});
+		}
 	}
 })
 

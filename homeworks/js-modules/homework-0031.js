@@ -170,10 +170,11 @@ function addtableHtmll(obj) {   ///add table
 		}
 	}
 }
-console.log( localStorage.getItem("values") !== null);
+// console.log( localStorage.;
 function functionClicer(e) {
 	e.preventDefault()
-	if (localStorage.getItem('values') === "[]"|| localStorage.getItem('values')  === null) {
+	if (localStorage.getItem("values").length === 2 || localStorage.getItem('values') === null) {
+		localStorage.clear()
 		document.querySelector('.produc').innerHTML = "Zamovlen sche namae";
 	}
 

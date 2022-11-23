@@ -170,12 +170,14 @@ function addtableHtmll(obj) {   ///add table
 		}
 	}
 }
-console.log(localStorage.getItem('Value'));
+console.log( localStorage.getItem("values") !== null);
 function functionClicer(e) {
-	if (localStorage.getItem('values') === "[]"|| localStorage.getItem('Key') === null|| localStorage.getItem('Value') === null) {
+	e.preventDefault()
+	if (localStorage.getItem('values') === "[]"|| localStorage.getItem('values')  === null) {
 		document.querySelector('.produc').innerHTML = "Zamovlen sche namae";
 	}
-	if (localStorage.getItem('Key') ||localStorage.getItem('values')) {
+
+	if (localStorage.getItem("values") !== null) {
 		document.querySelector('.produc').innerHTML = "";
 		document.querySelector('.form').classList.add("none");
 		const arr = document.querySelectorAll('[data-category-id]');
@@ -252,10 +254,10 @@ function functionClicer(e) {
 				}
 			}
 		});
+		
 		}
 		return
 	}
-	
 }
 const btnDeleteCategories = document.querySelector('.my-categories-btn')
 	.addEventListener('click', functionClicer, false);

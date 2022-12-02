@@ -98,9 +98,6 @@
 // btn.addEventListener('click', (e) => {
 //     goToUrl()
 // });
-// =======
-
-
 // const btn = document.querySelector('#button');
 // const inp = document.querySelector('input')
 // function goToUrl (){

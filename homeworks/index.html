@@ -5,8 +5,94 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<style>
+		.wrapper {
+			display: grid;
+			place-items: center;
+			height: 100vh;
+		}
+		.container {
+			display: grid;
+			grid-template-columns: 1fr 2fr 2fr;
+			place-items: center;
+			gap: 1rem;
+		}
+		ul {
+			list-style-type: none;
+		}
+
+		li {
+			padding: 0.5rem;
+			cursor: pointer;
+		}
+
+		li:active {
+			color: blue;
+		}
+
+		button {
+			padding: 0.5rem 2rem;
+			margin: 1rem 0;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
-	<script src="js-modules/homework-0028.js"></script>
+	<div class="wrapper">
+		<div class="container">
+			<ul id="categories">
+				<li data-category-id="1">Toys</li>
+				<li data-category-id="2">Sports</li>
+				<li data-category-id="3">Toys</li>
+				<li data-category-id="4">Grocery</li>
+				<li data-category-id="5">Garden</li>
+			</ul>
+			<ul id="products">
+			</ul>
+			<div>
+				<div id="description">
+				</div>
+				<button id="buy-button">Buy</button>
+				<div id="message">The product has been added to the basket</div>
+				<div class="form" hidden>
+					<form action="/" id="form" method="GET" class="form__body" onsubmit="onSubmit(event);"  name="form">
+						<h1 class="form__title">Замовлення</h1>
+						<p class="form__item">
+							<input id="formName" name="inputFullname"  type="text"  class="form__input" placeholder="Full name"
+								title="Разрешено от 3 до 20 символов" pattern="[A-Za-zа-яА-Я]{3,20}" >
+						</p>
+						<p>
+							City:
+							<select name="City">
+								<option  selected>Odessa</option>
+								<option >Morocco</option>
+								<option >Jerusalem</option>
+							</select>
+						</p>
+						<p class="form__item">
+							<label class="form__label" for="mailWarehouse">- Склад Нової</label>
+							<input class="form__input"   id="mailWarehouse" name="mailWarehouse" type="number" min="1"  pattern="[0-9]{3,20}">
+						</p>
+						<p class="form__item">
+							- Спосіб оплати:
+							<br>
+							<label class="form__label" for="formEmail">післяплата</label>
+							<input type="radio" checked id="formEmail" value="afterPayment" name="afterPayment" class="form__input">
+							<label class="form__label" for="formTel">на банківську картку</label>
+							<input type="radio" id="formTel" value="beforePayment" name="afterPayment" class="form__input">
+						</p>
+						<p class="form__item">
+							<label class="form__label" for="numberOfGoods">- Кількість продукції, що купується</label>
+							<input class="form__input"   id="numberOfGoods" name="numberOfGoods" type="number" min="1" pattern="[0-9]{3,20}">
+						</p>
+						<button type="submit" class="form__button">Надіслати запит</button>
+					</form>
+				</div>
+			</div>
+			<section hidden></section>
+			<section id="error"></section>
+		</div>
+	</div>
+	<script src="js-modules/homework-0029.js"></script>
 </body>
 </html>

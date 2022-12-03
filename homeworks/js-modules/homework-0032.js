@@ -10,23 +10,23 @@
 //   setTimeout(errorHide, 2000);
 // };
 function getPost(a) {
-	return new Promise((resolve, reject) => {
-		fetch(`https://jsonplaceholder.typicode.com/posts/${a}`)
-			.then((response) => response.json())
-			.then((post) => resolve(post))
-			.catch((err) => reject(err));
-	});
+  return new Promise((resolve, reject) => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${a}`)
+      .then((response) => response.json())
+      .then((post) => resolve(post))
+      .catch((err) => reject(err));
+  });
 }
 
 const showValue = () => {
   let a = 0;
   if (/^\d{1,2}|100$/gi.test(document.querySelector('.form-control').value)) {
     a = document.querySelector('.form-control').value;
-		getPost(a).then((post) => console.log(post));
+    getPost(a).then((post) => console.log(post));
   } else {
-		disappearingValue();
-		a = ""
-		getPost(a).then((post) => console.log(post));
+    disappearingValue();
+    a = '';
+    getPost(a).then((post) => console.log(post));
 
     return;
   }

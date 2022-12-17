@@ -1,5 +1,4 @@
- 
-const productsInfo =
+  const productsInfo =
 [
   {
     id: 1,
@@ -37,16 +36,21 @@ const productsInfo =
     price: '60',
     isActive: false
   }
-];
+	];
+
+
 const productsHtml = document.querySelector(".products")
-
-
+const lala = (price,id) => {
+	history.pushState({ id, price}, "", "./html/product.html")
+	location = "./product.html"
+}
 productsInfo.map(({price,id}) => {
 	productsHtml.insertAdjacentHTML("beforeend", `
-	<div class="product">
+	<div class="product"  onclick="lala(${price},${id})">
 						<div class="product__title">Product ${id}</div>
 						<div class="product__image"></div>
 						<div class="product__price">${price} $</div>
 						<button class="product__btn">Add to cart</button>
  </div>`)
 })
+

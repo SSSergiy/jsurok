@@ -4,7 +4,7 @@ const productsInfo =
     id: 1,
     name: 'Ivan',
     price: '770',
-    isActive: false
+    isActive: true
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const productsInfo =
     id: 3,
     name: 'Ivan',
     price: '550',
-    isActive: false
+    isActive: true
   },
   {
     id: 4,
@@ -28,7 +28,7 @@ const productsInfo =
     id: 5,
     name: 'Ivan',
     price: '750',
-    isActive: false
+    isActive: true
   },
   {
     id: 6,
@@ -43,6 +43,6 @@ const product = productsInfo.find(obj => obj.id === history.state.id)
 						<div class="product__title">Product ${product.id}</div>
 						<div class="product__image"></div>
 						<div class="product__price">${product.price} $</div>
-						<button class="product__btn">Add to cart</button>
+						<button class="product__btn" ${product.isActive?null:"hidden"}>Add to cart</button>
  `)
 

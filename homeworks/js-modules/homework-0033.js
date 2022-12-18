@@ -52,3 +52,20 @@ productsInfo.map(({price,id,isActive}) => {
  </div>`)
 })
 
+class MyCustomElement {
+	tagName = "";
+	constructor(tagName) {
+			this.tagName = document.createElement(tagName);
+	}
+	addClass(name) {
+		this.tagName.classList.add(name)
+		return this
+	}
+	setAttributes(name, nameStr) {
+		this.tagName.setAttribute(name, nameStr)
+		return this
+	}
+}
+const arr = new MyCustomElement("div")
+console.log(arr.addClass("auer").setAttributes("oOoOOOoo","TttTtT"));
+

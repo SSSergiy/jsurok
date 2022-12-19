@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,158 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+
+		        .wrapper {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        td {
+            height: 2rem;
+            width: 4rem;
+            border: 1px solid black;
+            text-align: center;
+        }
+		.form__input {
+			background: rgb(234, 255, 0);
+			padding: 1rem;
+			max-width:  100%;
+		}
+		form {
+			background: rgb(234, 255, 0);
+
+			max-width:  100%;
+		}
+		p {
+			display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 100%;
+    align-content: stretch;
+
+		}
+
+		body {
+			background: #1870bd;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	</style> 
+
+		.wrapper {
+			display: grid;
+			place-items: center;
+			height: 100vh;
+		}
+
+		.container {
+			display: grid;
+			grid-template-columns: 1fr 2fr 2fr;
+			place-items: center;
+			gap: 1rem;
+		}
+		ul {
+			list-style-type: none;
+		}
+
+		/* .yello:checked {
+			background-color: firebrick;
+		} */
+
+		.yello {
+			background-color: firebrick;
+		}
+
+		.order-list {
+			width: 100%;
+		}
+
+		tr {
+			height: 30px;
+
+			width: 100px;
+			border: 1px solid firebrick;
+
+		}
+
+		td {
+			width: 50px;
+			border: 1px solid firebrick;
+			padding: 10px;
+
+
+		}
+		#descriptions{
+		z-index: 10;
+    position: relative;
+    top: -502px;
+    left: 333%;
+		}
+		#products{
+		z-index: 10;
+    position: relative;
+    top: -403px;
+    left: -8px;
+		}
+		.produc{
+	z-index: 10;
+    position: relative;
+    top: -114px;
+    left: -87%;
+		}
+		#error{
+		z-index: 10;
+    position: relative;
+    top: -456px;
+    left: 239%;
+		}
+		.div{
+		    z-index: 10;
+    position: relative;
+    top: -402px;
+    left: -1%;
+		}
+		.none{
+		display: none;
+		}
+
+		table {
+			border: 1px solid firebrick;
+			width: 100px;
+		}
+
+		li {
+			padding: 0.5rem;
+			cursor: pointer;
+		}
+
+		li:active {
+			color: blue;
+		}
+
+		button {
+			padding: 0.5rem 2rem;
+			margin: 1rem 0;
+			cursor: pointer;
+		}
+		.form{
+		   z-index: 10;
+    position: relative;
+    top: -42px;
+    left: 0%;
+		}
+	</style>
+	</style>
+
 </head>
+
 <body>
 	<form id="form"  class="input-group mb-3" name="form">
 		<input type="number"required id="input" pattern="^\d{1,2}|100$" max="100" min="1" name="input" class="form-control" placeholder="Enter ID right now">

@@ -79,28 +79,25 @@
 
 // console.log(a(listOfLists));
 
-const btn = document.querySelector('#button');
-console.log(btn);
-const inp = document.querySelector('input')
-console.log(inp.value.split('/')[0])
+// const btn = document.querySelector('#button');
+// console.log(btn);
+// const inp = document.querySelector('input')
+// console.log(inp.value.split('/')[0])
 
-function goToUrl (){
-    let d = 'https://'
-    if(inp.value.split(':')[0] ==='https' || inp.value.split(':')[0] ==='http'){
-			console.log(inp.value);
-			location.href = inp.value
-    } else{
+// function goToUrl (){
+//     let d = 'https://'
+//     if(inp.value.split(':')[0] ==='https' || inp.value.split(':')[0] ==='http'){
+// 			console.log(inp.value);
+// 			location.href = inp.value
+//     } else{
         
-				location.href = d + inp.value
-    }
+// 				location.href = d + inp.value
+//     }
 
-}
-btn.addEventListener('click', (e) => {
-    goToUrl()
-});
-=======
-
-
+// }
+// btn.addEventListener('click', (e) => {
+//     goToUrl()
+// });
 // const btn = document.querySelector('#button');
 // const inp = document.querySelector('input')
 // function goToUrl (){
@@ -129,12 +126,11 @@ btn.addEventListener('click', (e) => {
 // btnHtml.addEventListener('click', (e) => {
 //   goToPage();
 // });
-=======
-/*
+
 // WINDOW
-const windowWidth = window.innerWidth;
-console.log(`Ширина окна браузера: ${windowWidth}px`);
-*/
+// const windowWidth = window.innerWidth;
+// console.log(`Ширина окна браузера: ${windowWidth}px`);
+// */
 //========================================================================================================================================================
 //BOM
 
@@ -1174,3 +1170,220 @@ console.log(link.hidden);
 
 
 //========================================================================================================================================================
+// <!DOCTYPE html>
+// <html lang="en">
+
+// <head>
+// 	<meta charset="UTF-8">
+// 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+// 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+// 	<title>Document</title>
+// 	<style>
+// 		.wrapper {
+// 			display: grid;
+// 			place-items: center;
+// 			height: 100vh;
+// 		}
+
+// 		.container {
+// 			display: grid;
+// 			grid-template-columns: 1fr 2fr 2fr;
+// 			place-items: center;
+// 			gap: 1rem;
+// 		}
+
+// 		ul {
+// 			list-style-type: none;
+// 		}
+
+// 		li {
+// 			padding: 0.5rem;
+// 			cursor: pointer;
+// 		}
+
+// 		li:active {
+// 			color: blue;
+// 		}
+
+// 		button {
+// 			padding: 0.5rem 2rem;
+// 			margin: 1rem 0;
+// 			cursor: pointer;
+// 		}
+// 	</style>
+// </head>
+
+// <body>
+// 	<div class="wrapper">
+// 		<div class="container">
+// 			<ul id="categories">
+// 				<li data-category-id="1">Toys</li>
+// 				<li data-category-id="2">Sports</li>
+// 				<li data-category-id="3">Toys</li>
+// 				<li data-category-id="4">Grocery</li>
+// 				<li data-category-id="5">Garden</li>
+// 			</ul>
+// 			<ul id="products">
+// 			</ul>
+// 			<div>
+// 				<div id="description">
+// 				</div>
+// 				<button id="buy-button">Buy</button>
+// 				<div id="message">The product has been added to the basket</div>
+// 				<div class="form" hidden>
+// 					<form action="/" id="form" method="GET" class="form__body" onsubmit="onSubmit(event);" name="form">
+// 						<h1 class="form__title">Замовлення</h1>
+// 						<p class="form__item">
+// 							<input id="formName" name="inputFullname" type="text" class="form__input" placeholder="Full name">
+// 						</p>
+// 						<p>
+// 							City:
+// 							<select name="City">
+// 								<option selected>Odessa</option>
+// 								<option>Morocco</option>
+// 								<option>Jerusalem</option>
+// 							</select>
+// 						</p>
+// 						<p class="form__item">
+// 							<label class="form__label" for="mailWarehouse">- Склад Нової</label>
+// 							<input class="form__input" id="mailWarehouse" name="mailWarehouse" type="number" min="1">
+// 						</p>
+// 						<p class="form__item">
+// 							- Спосіб оплати:
+// 							<br>
+// 							<label class="form__label" for="formEmail">післяплата</label>
+// 							<input type="radio" checked id="formEmail" value="afterPayment" name="afterPayment" class="form__input">
+// 							<label class="form__label" for="formTel">на банківську картку</label>
+// 							<input type="radio" id="formTel" value="beforePayment" name="afterPayment" class="form__input">
+// 						</p>
+// 						<p class="form__item">
+// 							<label class="form__label" for="numberOfGoods">- Кількість продукції, що купується</label>
+// 							<input class="form__input" id="numberOfGoods" name="numberOfGoods" type="number" min="1">
+// 						</p>
+// 						<button type="submit" class="form__button">Надіслати запит</button>
+// 					</form>
+// 				</div>
+// 			</div>
+// 			<section hidden></section>
+// 			<section id="error"></section>
+// 		</div>
+// 	</div>
+// 	<script src="js-modules/homework-0031.js"></script>
+// </body>
+
+// </html>
+// <!DOCTYPE html>
+// <html lang="en">
+
+// <head>
+// 	<meta charset="UTF-8">
+// 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+// 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+// 	<title>Document</title>
+// 	<style>
+// 		        .wrapper {
+//             display: grid;
+//             place-items: center;
+//             height: 100vh;
+//         }
+
+//         .container {
+//             width: 100%;
+//         }
+
+//         td {
+//             height: 2rem;
+//             width: 4rem;
+//             border: 1px solid black;
+//             text-align: center;
+//         }
+// 		.form__input {
+// 			background: rgb(234, 255, 0);
+// 			padding: 1rem;
+// 			max-width:  100%;
+// 		}
+// 		form {
+// 			background: rgb(234, 255, 0);
+
+// 			max-width:  100%;
+// 		}
+// 		p {
+// 			display: flex;
+//     justify-content: space-between;
+//     align-items: baseline;
+//     max-width: 100%;
+//     align-content: stretch;
+
+// 		}
+
+// 		body {
+// 			background: #1870bd;
+// 			display: flex;
+// 			justify-content: center;
+// 			align-items: center;
+// 		}
+// 	</style>
+// </head>
+
+// <body>
+// 	<div class="wrapper">
+// 		<div class="container">
+// 			<div class="form">
+// 		<form action="/" id="form" method="GET" class="form__body" name="form">
+// 			<h1 class="form__title">Ми хотіли б Вам допомогти</h1>
+// 			<p class="form__item">
+// 				<label for="formName">- Ім'я, Прізвище</label>
+// 				<input id="formName" name="firstNameLastName" type="text" class="form__input" placeholder="- Ім'я, Прізвище"
+// 				 >
+// 			</p>
+// 			<p class="form__item">
+// 				<label for="dateOfBirth">- Дата народження</label>
+// 				<input id="dateOfBirth" name="data" type="text" class="form__input" placeholder="- Дата народження"
+// 				 >
+// 			</p>
+// 			<p class="form__item">
+// 				<span>- Стать:</span>
+// 				<br>
+// 				<label class="form__label" for="man">man</label>
+// 				<input type="radio" checked id="man" value="man" name="gender" class="form__input">
+// 				<label class="form__label" for="woman">woman</label>
+// 				<input type="radio" id="woman" value="woman" name="gender" class="form__input">
+// 			</p>
+// 			<p>
+// 				<span>- Місто :</span>
+// 				<br><br>
+// 				<select name="citi" class="form__input">
+// 					<option value="Jerusalem" selected>Jerusalem</option>
+// 					<option value="Morocco">Morocco</option>
+// 					<option value="Odessa">Odessa</option>
+// 				</select>
+// 			</p>
+// 			<p class="form__item">
+// 				<label class="form__label" for="adress">- Адреса</label>
+// 				<textarea name="ADRESS" id="adress" class="form__input" placeholder="- Адреса">Адреса</textarea>
+// 			</p>
+// 			<p class="form__item">
+// 				<span>- Мови, якими володіє:</span>
+// 				<br><br>
+// 				<label class="form__label" for="china">Китайский</label>
+// 				<input class="form__input" id="china" name="china" type="checkbox">
+// 				<label class="form__label" for="inglish">Англиский</label>
+// 				<input class="form__input" id="inglish" name="inglish" type="checkbox">
+// 			</p>
+// 			<button type="submit" class="form__button">Save</button>
+// 		</form>
+// 	</div>
+// 		</div>
+// 	</div>
+// 	<script src="js-modules/homework-0030.js"></script>
+// </body>
+// </html>
+// .toISOString().split('T')[0]   "Integer ac leo. Pellentesque ultrices mattis odio."
+// const productObj = products.find(el => el.description == messageHtml.innerHTML)
+// console.log(productObj);
+// /^\d{2}(-?)\d{2}\1\d{2}\1\d{2}$/
+function validateUsr(username) {
+  res =  /^[a-z\d_]{4,16}/.test(username) 
+  return res
+}
+console.log(validateUsr(username));

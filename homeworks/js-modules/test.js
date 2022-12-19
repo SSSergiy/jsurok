@@ -1382,8 +1382,8 @@ console.log(link.hidden);
 // const productObj = products.find(el => el.description == messageHtml.innerHTML)
 // console.log(productObj);
 // /^\d{2}(-?)\d{2}\1\d{2}\1\d{2}$/
-function validateUsr(username) {
-  res =  /^[a-z\d_]{4,16}/.test(username) 
-  return res
-}
-console.log(validateUsr(username));
+// function validateUsr(username) {
+//   res =  /^[a-z\d_]{4,16}/.test(username) 
+//   return res
+// }
+// console.log(validateUsr(username));

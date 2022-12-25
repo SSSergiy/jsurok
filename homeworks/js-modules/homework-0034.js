@@ -35,16 +35,16 @@ const fetchData = async () => {
 	).innerHTML = `<img src="${imgUrl}" width="184" height="184">
 	<div>
 	<style style="display: block; white-space:pre"
-	contenteditable="">
-	objInfo = {
-	icon: ${objInfo[0].icon};
-	deg: ${objInfo[0].deg};
-	description: ${objInfo[0].description};
-	humidity: ${objInfo[0].humidity};
-	speed: ${objInfo[0].speed};
-	temp: ${objInfo[0].temp};
-	pressure: ${objInfo[0].pressure};
-	}
+	                                                                                                                           contenteditable="">
+	                                                                                                                           objInfo = {
+	                                                                                                                           icon: ${objInfo[0].icon};
+	                                                                                                                           deg: ${objInfo[0].deg};
+	                                                                                                                           description: ${objInfo[0].description};
+	                                                                                                                           humidity: ${objInfo[0].humidity};
+	                                                                                                                           speed: ${objInfo[0].speed};
+	                                                                                                                           temp: ${objInfo[0].temp};
+	                                                                                                                           pressure: ${objInfo[0].pressure};
+	                                                                                                                           }
 	</style>
 	</div>
 

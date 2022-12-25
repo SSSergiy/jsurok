@@ -29,10 +29,25 @@ const fetchData = async () => {
     wind: { speed, deg }
   } = data;
 	const objInfo = [{ icon, description, temp: Math.round(temp - 273), pressure, humidity, speed, deg }];
-	console.log(objInfo);
   const imgUrl = `http://openweathermap.org/img/w/${icon}.png`;
   document.querySelector(
     'body'
-  ).innerHTML = `<img src="${imgUrl}" width="184" height="184">`;
+	).innerHTML = `<img src="${imgUrl}" width="184" height="184">
+	<div>
+	<style style="display: block; white-space:pre"
+	contenteditable="">
+	objInfo = {
+	icon: ${objInfo[0].icon};
+	deg: ${objInfo[0].deg};
+	description: ${objInfo[0].description};
+	humidity: ${objInfo[0].humidity};
+	speed: ${objInfo[0].speed};
+	temp: ${objInfo[0].temp};
+	pressure: ${objInfo[0].pressure};
+	}
+	</style>
+	</div>
+
+	`;
 };
 fetchData();

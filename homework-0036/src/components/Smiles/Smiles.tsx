@@ -1,24 +1,30 @@
-import React, { ComponentLifecycle } from "react";
-class Smiles extends React.Component{
-  constructor(props:any ) {
+import React from "react";
+
+type SmilesProps = {};
+type SmilesState = {
+  thumbsUp: number;
+  thumbDown: number;
+  heart: number;
+  fecalMass: number;
+  smile: number;
+};
+
+class Smiles extends React.Component<SmilesProps, SmilesState> {
+  constructor(props: any) {
     super(props);
     this.plusThumbsUp = this.plusThumbsUp.bind(this);
     this.plusThumbDown = this.plusThumbDown.bind(this);
     this.plusHeart = this.plusHeart.bind(this);
     this.plusFecalMass = this.plusFecalMass.bind(this);
-
     this.plusSmile = this.plusSmile.bind(this);
     this.state = {
-
-        thumbsUp: 0,
-        thumbDown: 0,
-        heart: 0,
-        fecalMass: 0,
-        smile: 0,
-
+      thumbsUp: 0,
+      thumbDown: 0,
+      heart: 0,
+      fecalMass: 0,
+      smile: 0,
     };
   }
-
   render() {
     return (
       <>
@@ -37,7 +43,7 @@ class Smiles extends React.Component{
               <div className="counter">{this.state.heart}</div>
             </div>
             <div>
-              <button  onClick={this.plusFecalMass}>💩</button>
+              <button onClick={this.plusFecalMass}>💩</button>
               <div className="counter">{this.state.fecalMass}</div>
             </div>
             <div>
@@ -50,20 +56,19 @@ class Smiles extends React.Component{
     );
   }
   plusThumbsUp() {
-    this.setState({thumbsUp:  this.state.thumbsUp + 1});
+    this.setState({ thumbsUp: this.state.thumbsUp + 1 });
   }
   plusThumbDown() {
-    this.setState({thumbDown:  this.state.thumbDown + 1});
+    this.setState({ thumbDown: this.state.thumbDown + 1 });
   }
   plusSmile() {
-    this.setState({smile:  this.state.smile + 1});
+    this.setState({ smile: this.state.smile + 1 });
   }
   plusFecalMass() {
-    this.setState({fecalMass:  this.state.fecalMass + 1});
+    this.setState({ fecalMass: this.state.fecalMass + 1 });
   }
   plusHeart() {
-    this.setState({heart:  this.state.heart + 1});
+    this.setState({ heart: this.state.heart + 1 });
   }
 }
-
 export default Smiles;

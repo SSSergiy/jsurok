@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import Form from './Form';
 
-const App: React.FC = () => {
+const App: React.FC = ({}) => {
   const [open, setOpen] = useState(false);
 
   const showModal = () => {
@@ -14,11 +14,10 @@ const App: React.FC = () => {
   };
 
   return (
-    <> 
-      <Button type='primary' onClick={showModal} size="middle"
-  >
+    <>
+      <Button type='primary' onClick={showModal} size='middle'>
         Add Character
-			</Button>
+      </Button>
       <Modal open={open} title='Title' onCancel={handleCancel} footer={['']}>
         <Form onClick={handleCancel} />
       </Modal>

@@ -1,16 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Button, Space, Input, Form, message } from 'antd';
+import { useState } from 'react';
+import { Button, Space, Input, Form } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
-import { useForm } from 'antd/es/form/Form';
-
 const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
-  const [messageApi, contextHolder] = message.useMessage();
-  const info = () => {
-    messageApi.info('Character added successfully');
-  };
-  const [obj, setObj] = useState([]);
+	const [obj, setObj] = useState([]);
+	// console.log(obj);
+	
   const addUser = (e) => {
-    e.preventDefault();
+		e.preventDefault();
     const abbjj = {
       name: e.target[0].value,
       username: e.target[1].value,
@@ -18,9 +14,10 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
       key: length + 1 + '',
       id: length + 1 + ''
     };
-    setObj(abbjj);
+		setObj(abbjj);
+		console.log(obj);
+		
     onChange.push(abbjj);
-
     e.target[0].value = '';
     e.target[1].value = '';
     e.target[2].value = '';
@@ -34,16 +31,14 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
             className={`popup__content ${
               modalOpened ? 'popup__contents' : null
             }`}
-          >
-            <CloseCircleOutlined
-              href='#header'
+					>
+          <CloseCircleOutlined href='#header'
               className='popup__close close-popup'
-              onClick={closeModal}
-            />
+              onClick={closeModal} />
             <div className='popup__title'>ADD please persone</div>
             <div className='popup__text'>
               <div>
-                <form noValidate onSubmit={addUser} >
+                <form noValidate onSubmit={addUser}>
                   <Form.Item
                     name='name'
                     label='name'
@@ -55,8 +50,6 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
                     ]}
                   >
                     <Input
-                      role='spinbutton'
-                      step='1'
                       placeholder='Please input your name'
                       type='text'
                       id='control-hooks_user_name'
@@ -73,8 +66,6 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
                     ]}
                   >
                     <Input
-                      role='spinbutton'
-                      step='1'
                       placeholder='Please input your username'
                       type='text'
                       id='control-hooks_user_username'
@@ -91,8 +82,6 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
                     ]}
                   >
                     <Input
-                      role='spinbutton'
-                      step='1'
                       placeholder='Please input your phone'
                       type='text'
                       id='control-hooks_Phone'
@@ -106,9 +95,8 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
                     }}
                   >
                     <div>
-                      {contextHolder}
                       <Space wrap>
-                        <Button type='primary' htmlType='submit' onClick={info}>
+                        <Button type='primary' htmlType='submit'>
                           Save
                         </Button>
                       </Space>

@@ -3,8 +3,6 @@ import TbodyHtml from './components/TbodyHtml/TbodyHtml';
 import ButtonModal from './components/ButtonModal/ButtonModal';
 import ModalTodo from './components/ModalTodo/ModalTodo';
 import { useState } from 'react';
-import { Table } from 'antd';
-// import type { ColumnsType } from 'antd/es/table';
 
 function App() {
   const [modalOpened, setModalOpened] = useState(false);

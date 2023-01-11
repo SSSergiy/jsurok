@@ -4,9 +4,6 @@ import { useState, useEffect, FC } from 'react';
 const Tbody: FC = ({ onChange}) => {
   const [items, setItems] = useState([]);
 	onChange(items);
-
-
-
   const handleDelete = (id) => {
     const arr = items.filter((item) => {
       return item.id !== id;

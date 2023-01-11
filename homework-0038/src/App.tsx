@@ -8,18 +8,13 @@ function App() {
   const [modalOpened, setModalOpened] = useState(false);
   const [name, setName] = useState([]);
   const [getChangess, setChangess] = useState(name);
-  console.log(getChangess);
 	getChangess.length ? name.push(getChangess) : undefined;
-  console.log(name);
-
   const handleNameChange = (name: any) => {
     setName(name);
   };
-
   const getChanges = (names: any) => {
     setChangess(names);
   };
-
   return (
     <>
       <center>
@@ -37,7 +32,6 @@ function App() {
         closeModal={() => setModalOpened(false)}
 				length={name.length}
 				modalOpened={modalOpened}
-				
         onChange={name}
       />
     </>

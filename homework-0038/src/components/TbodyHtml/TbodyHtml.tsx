@@ -35,10 +35,10 @@ const Tbody: FC = ({ onChange}) => {
 	const columnsHtml = () => {
 	return items.length? items.map(({ id, key, name, username, phone }) => (
 		<tr key={key}>
-			<td style={{ border: '1px solid #1677FF', padding:"7`	px"}}>{name}</td>
-			<td style={{ border: '1px solid #1677FF', padding:"7`	px"}}>{username}</td>
-			<td style={{ border: '1px solid #1677FF', padding:"7`	px"}}>{phone}</td>
-			<td style={{ border: '1px solid #1677FF', padding:"7`	px"}}>
+			<td style={{ border: '1px solid #1677FF', padding:"7px"}}>{name}</td>
+			<td style={{ border: '1px solid #1677FF', padding:"7px"}}>{username}</td>
+			<td style={{ border: '1px solid #1677FF', padding:"7px"}}>{phone}</td>
+			<td style={{ border: '1px solid #1677FF', padding:"7px"}}>
 				<BtnDelete onClickEditble={() => handleDelete(id)} />
 			</td>
 		</tr>

@@ -1,9 +1,16 @@
-import { useState } from 'react';
-import { Button, Space, Input, Form } from 'antd';
+import { useState, useEffect } from 'react';
+import { Button, Space, Input, Form, message } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
+import { useForm } from 'antd/es/form/Form';
+
 const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const info = () => {
+    messageApi.info('Character added successfully');
+  };
   const [obj, setObj] = useState([]);
   const addUser = (e) => {
+    e.preventDefault();
     const abbjj = {
       name: e.target[0].value,
       username: e.target[1].value,
@@ -13,10 +20,10 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
     };
     setObj(abbjj);
     onChange.push(abbjj);
+
     e.target[0].value = '';
     e.target[1].value = '';
     e.target[2].value = '';
-    e.preventDefault();
   };
 
   return (
@@ -36,7 +43,7 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
             <div className='popup__title'>ADD please persone</div>
             <div className='popup__text'>
               <div>
-                <form noValidate onSubmit={addUser}>
+                <form noValidate onSubmit={addUser} >
                   <Form.Item
                     name='name'
                     label='name'
@@ -74,7 +81,7 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
                     />
                   </Form.Item>
                   <Form.Item
-                    name='username'
+                    name='phone'
                     label='phone'
                     rules={[
                       {
@@ -99,8 +106,9 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
                     }}
                   >
                     <div>
+                      {contextHolder}
                       <Space wrap>
-                        <Button type='primary' htmlType='submit'>
+                        <Button type='primary' htmlType='submit' onClick={info}>
                           Save
                         </Button>
                       </Space>

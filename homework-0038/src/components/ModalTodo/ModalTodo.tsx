@@ -1,21 +1,22 @@
 import { useState } from 'react';
 const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
   const [obj, setObj] = useState([]);
-  const addUser = (e) => {
-    e.preventDefault();
-    setObj({
+	const addUser = (e) => {
+		const abbjj={
       name: e.target[0].value,
       username: e.target[1].value,
       phone: e.target[2].value,
       key: length + 1 + '',
       id: length + 1 + ''
-    });
-    onChange.push(obj);
+		}
+    setObj(abbjj);
+		onChange.push(abbjj)
+		
     e.target[0].value = '';
     e.target[1].value = '';
     e.target[2].value = '';
+		e.preventDefault();
   };
-
   return (
     <>
       <div id='popup' className={`popup ${modalOpened ? 'popups' : null}`}>

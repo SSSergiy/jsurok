@@ -32,19 +32,23 @@ const Tbody: FC = ({ onChange}) => {
       });
 	}, []);
 
+	const columnsHtml = () => {
+	return items.length? items.map(({ id, key, name, username, phone }) => (
+		<tr key={key}>
+			<td style={{ border: '1px solid #1677FF', padding:"7`	px"}}>{name}</td>
+			<td style={{ border: '1px solid #1677FF', padding:"7`	px"}}>{username}</td>
+			<td style={{ border: '1px solid #1677FF', padding:"7`	px"}}>{phone}</td>
+			<td style={{ border: '1px solid #1677FF', padding:"7`	px"}}>
+				<BtnDelete onClickEditble={() => handleDelete(id)} />
+			</td>
+		</tr>
+	)):null
+	}
+
   return (
     <>
       <tbody>
-				{items.length? items.map(({ id, key, name, username, phone }) => (
-          <tr key={key}>
-            <td style={{ border: '1px solid ' }}>{name}</td>
-            <td style={{ border: '1px solid ' }}>{username}</td>
-            <td style={{ border: '1px solid ' }}>{phone}</td>
-            <td style={{ border: '1px solid ' }}>
-              <BtnDelete onClickEditble={() => handleDelete(id)} />
-            </td>
-          </tr>
-        )):null}
+				{columnsHtml()}
       </tbody>
     </>
   );

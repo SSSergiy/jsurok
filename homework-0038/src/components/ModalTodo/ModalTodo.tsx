@@ -1,22 +1,23 @@
 import { useState } from 'react';
+import { Button, Space, Input, Form } from 'antd';
+import { CloseCircleOutlined } from '@ant-design/icons';
 const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
   const [obj, setObj] = useState([]);
-	const addUser = (e) => {
-		const abbjj={
+  const addUser = (e) => {
+    const abbjj = {
       name: e.target[0].value,
       username: e.target[1].value,
       phone: e.target[2].value,
       key: length + 1 + '',
       id: length + 1 + ''
-		}
+    };
     setObj(abbjj);
-		onChange.push(abbjj)
+    onChange.push(abbjj);
     e.target[0].value = '';
     e.target[1].value = '';
     e.target[2].value = '';
-		e.preventDefault();
+    e.preventDefault();
   };
-	
 
   return (
     <>
@@ -27,54 +28,69 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
               modalOpened ? 'popup__contents' : null
             }`}
           >
-            <a
+            <CloseCircleOutlined
               href='#header'
               className='popup__close close-popup'
               onClick={closeModal}
-            >
-              X
-            </a>
+            />
             <div className='popup__title'>ADD please persone</div>
             <div className='popup__text'>
               <div>
                 <form noValidate onSubmit={addUser}>
-                  <div>
-                    <div>
-                      <div>
-                        <label htmlFor='control-hooks_Name' title='name'>
-                          name
-                        </label>
-                      </div>
-                      <div>
-                        <input
-                          placeholder='Name'
-                          id='control-hooks_Name'
-                          type='text'
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor='control-hooks_FamilName' title='username'>
-                      username
-                    </label>
-                    <div>
-                      <input placeholder='username' type='text' />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor='control-hooks_Phone' title='phone'>
-                      phone
-                    </label>
-                    <div>
-                      <input
-                        role='spinbutton'
-                        step='1'
-                        placeholder='phone'
-                        id='control-hooks_Phone'
-                      />
-                    </div>
-                  </div>
+                  <Form.Item
+                    name='name'
+                    label='name'
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please input your name'
+                      }
+                    ]}
+                  >
+                    <Input
+                      role='spinbutton'
+                      step='1'
+                      placeholder='Please input your name'
+                      type='text'
+                      id='control-hooks_user_name'
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    name='username'
+                    label='username'
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please input your username'
+                      }
+                    ]}
+                  >
+                    <Input
+                      role='spinbutton'
+                      step='1'
+                      placeholder='Please input your username'
+                      type='text'
+                      id='control-hooks_user_username'
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    name='username'
+                    label='phone'
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Please input your name'
+                      }
+                    ]}
+                  >
+                    <Input
+                      role='spinbutton'
+                      step='1'
+                      placeholder='Please input your phone'
+                      type='text'
+                      id='control-hooks_Phone'
+                    />
+                  </Form.Item>
                   <div
                     style={{
                       display: 'flex',
@@ -83,14 +99,18 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
                     }}
                   >
                     <div>
-                      <button type='submit'>
-                        <span>Save</span>
-                      </button>
+                      <Space wrap>
+                        <Button type='primary' htmlType='submit'>
+                          Save
+                        </Button>
+                      </Space>
                     </div>
                     <div>
-                      <button onClick={closeModal} type='button'>
-                        <span>Exit</span>
-                      </button>
+                      <Space wrap>
+                        <Button onClick={closeModal} htmlType='button'>
+                          <span>Exit</span>
+                        </Button>
+                      </Space>
                     </div>
                   </div>
                 </form>

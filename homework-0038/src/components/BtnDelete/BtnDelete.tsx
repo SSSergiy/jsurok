@@ -1,5 +1,4 @@
 import { Button, Space } from 'antd';
-
 const BtnDelete = ({ onClickEditble }) => {
   return (
     <>

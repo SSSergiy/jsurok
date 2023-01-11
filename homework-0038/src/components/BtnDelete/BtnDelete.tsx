@@ -1,10 +1,13 @@
-const BtnDelete = ({onClickEditble,}) => {
-	
+import { Button, Space } from 'antd';
+
+const BtnDelete = ({ onClickEditble }) => {
   return (
     <>
-      <button onClick={onClickEditble}>
-        <span> Delete </span>
-      </button>
+      <Space wrap>
+        <Button type='primary' danger onClick={onClickEditble}>
+          <span> Delete </span>
+        </Button>
+      </Space>
     </>
   );
 };

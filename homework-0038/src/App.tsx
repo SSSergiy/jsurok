@@ -7,14 +7,10 @@ import { useState } from 'react';
 function App() {
   const [modalOpened, setModalOpened] = useState(false);
   const [name, setName] = useState([]);
-  const [getChangess, setChangess] = useState(name);
-  getChangess.length ? name.push(getChangess) : undefined;
   const handleNameChange = (name: any) => {
     setName(name);
   };
-  const getChanges = (names: any) => {
-    setChangess(names);
-  };
+
   return (
     <>
       <center>

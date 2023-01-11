@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { Button, Space, Input, Form } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
-const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
+const ModalTodo = ({ closeModal, modalOpened, length, onChange }:any) => {
 	const [obj, setObj] = useState([]);
-	// console.log(obj);
-	
-  const addUser = (e) => {
+  const addUser = (e:any) => {
 		e.preventDefault();
-    const abbjj = {
+    const abbjj:object = {
       name: e.target[0].value,
       username: e.target[1].value,
       phone: e.target[2].value,
@@ -15,8 +13,6 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
       id: length + 1 + ''
     };
 		setObj(abbjj);
-		console.log(obj);
-		
     onChange.push(abbjj);
     e.target[0].value = '';
     e.target[1].value = '';

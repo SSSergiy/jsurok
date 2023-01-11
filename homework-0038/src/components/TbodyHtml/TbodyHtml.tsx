@@ -1,11 +1,11 @@
 import BtnDelete from '../BtnDelete/BtnDelete';
 import { useState, useEffect, FC } from 'react';
 
-const Tbody: FC = ({ onChange}) => {
+const Tbody: FC = ({ onChange}:any) => {
   const [items, setItems] = useState([]);
 	onChange(items);
-  const handleDelete = (id) => {
-    const arr = items.filter((item) => {
+  const handleDelete = (id:any) => {
+    const arr = items.filter((item:any) => {
       return item.id !== id;
     });
     setItems(arr);
@@ -17,8 +17,14 @@ const Tbody: FC = ({ onChange}) => {
         return res.json();
       })
       .then((json) => {
-        json.map(({ id, name, username, phone }) => {
-          const obj = {
+        json.map(({ id, name, username, phone }:any) => {
+					const obj: {
+						id:string,
+						key:string,
+						name:string,
+						username:string,
+						phone:string,
+					} = {
             id,
             key: id + '',
             name,

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Button, Space } from 'antd';
 
-const ButtonModal: FC = ({ openModal }) => {
+const ButtonModal: FC = ({ openModal }:any) => {
   return (
     <>
       <Space direction='vertical' style={{ width: '30%', margin: '30px' }}>

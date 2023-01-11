@@ -1,6 +1,6 @@
 import { Button, Space } from 'antd';
 
-const BtnDelete = ({ onClickEditble }) => {
+const BtnDelete = ({ onClickEditble }:any) => {
   return (
     <>
       <Space wrap>

@@ -11,12 +11,13 @@ const ModalTodo = ({ closeModal, modalOpened, length, onChange }) => {
 		}
     setObj(abbjj);
 		onChange.push(abbjj)
-		
     e.target[0].value = '';
     e.target[1].value = '';
     e.target[2].value = '';
 		e.preventDefault();
   };
+	
+
   return (
     <>
       <div id='popup' className={`popup ${modalOpened ? 'popups' : null}`}>

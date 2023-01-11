@@ -1,5 +1,6 @@
 .popup {
-	position:static;
+	position:fixed;
+	z-index: -1;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.8);
@@ -74,15 +75,14 @@
 }
 
 /*! CSS Used from: Embedded */
-/* .popup {
+.popups {
 	opacity: 1;
+	z-index: 0;
 	transition: all 0.8s ease 0s;
-	position:fixed;
-
 }
 
 
-.popup__content {
+.popup__contents {
 	opacity: 1;
 	transform: perspective(600px) translate(0px, 0%) rotateX(360deg);
-} */
+}

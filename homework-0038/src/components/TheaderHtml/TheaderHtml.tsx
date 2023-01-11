@@ -3,12 +3,11 @@ import columns from '../Objects/HTMLmarkup';
 const TheaderHtml = () => {
   return (
     <>
-      <thead >
+      <thead>
         <tr>
-          <th  style={{border:"1px solid "}}>{columns[0].title}</th>
-          <th style={{border:"1px solid "}}>{columns[1].title}</th>
-          <th style={{border:"1px solid "}}>{columns[2].title}</th>
-          <th style={{border:"1px solid "}}>{columns[3].title}</th>
+          {columns.map(({ title }) => (
+            <th style={{ border: '1px solid ' }}>{title}</th>
+          ))}
         </tr>
       </thead>
     </>

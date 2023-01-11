@@ -1,7 +1,8 @@
-const BtnDelete = () => {
+const BtnDelete = ({onClickEditble,}) => {
+	
   return (
     <>
-      <button>
+      <button onClick={onClickEditble}>
         <span> Delete </span>
       </button>
     </>

@@ -1,7 +1,11 @@
-const ButtonModal: React.FC = () => {
+import {FC} from "react";
+
+const ButtonModal: FC = ({ openModal }) => {
+	// console.log(openModal);
+	
   return (
     <>
-      <button type='button'>
+      <button type='button' onClick={openModal}>
         <span>Add Character</span>
       </button>
     </>

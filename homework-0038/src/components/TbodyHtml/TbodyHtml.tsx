@@ -1,8 +1,18 @@
 import BtnDelete from '../BtnDelete/BtnDelete';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 
-const Tbody: React.FC = () => {
+const Tbody: FC = ({ onChange}) => {
   const [items, setItems] = useState([]);
+	onChange(items);
+
+
+
+  const handleDelete = (id) => {
+    const arr = items.filter((item) => {
+      return item.id !== id;
+    });
+    setItems(arr);
+  };
   useEffect(() => {
     const arr: [] = [];
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -10,32 +20,34 @@ const Tbody: React.FC = () => {
         return res.json();
       })
       .then((json) => {
-        json.map((item) => {
+        json.map(({ id, name, username, phone }) => {
           const obj = {
-            key: item.id + '',
-            name: item.name,
-            username: item.username,
-            phone: item.phone
+            id,
+            key: id + '',
+            name,
+            username,
+            phone
           };
-          arr.push(obj);
+					arr.push(obj);
           return arr;
         });
-        setItems(arr);
+				setItems(arr);
       });
-  }, []);
+	}, []);
+
   return (
     <>
       <tbody>
-        {items.map(({ key, name, username, phone }) => (
+				{items.length? items.map(({ id, key, name, username, phone }) => (
           <tr key={key}>
             <td style={{ border: '1px solid ' }}>{name}</td>
             <td style={{ border: '1px solid ' }}>{username}</td>
             <td style={{ border: '1px solid ' }}>{phone}</td>
             <td style={{ border: '1px solid ' }}>
-              <BtnDelete />
+              <BtnDelete onClickEditble={() => handleDelete(id)} />
             </td>
           </tr>
-        ))}
+        )):null}
       </tbody>
     </>
   );

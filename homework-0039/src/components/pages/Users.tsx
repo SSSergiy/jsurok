@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; //ExpandMoreIcon
+// import { Link } from 'react-router-dom'; //ExpandMoreIcon
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import NavigationIcon from '@mui/icons-material/Navigation';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import {
   TableContainer,
@@ -17,30 +23,34 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-  TableFooter
+  TableFooter,
+  Fab
 } from '@mui/material';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const [getPhotos, sepPhotos] = useState(false);
+  const [getAlbums, sepAlbums] = useState(false);
+
+  console.log(getAlbums);
+
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       .then((users) => {
         setUsers(users);
-        console.log(users);
       });
   }, []);
+
   const [albums, setAlbums] = useState([]);
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/albums')
       .then((res) => res.json())
       .then((albums) => {
         setAlbums(albums);
-        // console.log(albums);
       });
   }, []);
 
-  console.log(albums);
   const [photos, setPhotos] = useState([]);
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/photos')
@@ -50,7 +60,6 @@ const Users = () => {
         // console.log( photos);
       });
   }, []);
-  console.log(photos);
 
   const tableTitles = [
     { title: 'avatar' },
@@ -105,9 +114,37 @@ const Users = () => {
     return arr;
   };
 
+  const lookPhotos = () => {
+    sepPhotos(true);
+  };
+  const lookAlbums = () => {
+    sepPhotos(false);
+    sepAlbums(true);
+  };
   return (
     <>
-      <main>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position='static'>
+          <Toolbar
+            variant='dense'
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-around',
+              padding: '30px'
+            }}
+          >
+            <Fab variant='extended'>
+              <NavigationIcon sx={{ mr: 1 }} onClick={lookAlbums} />
+              userId
+            </Fab>
+            <Fab variant='extended'>
+              <NavigationIcon sx={{ mr: 1 }} onClick={lookPhotos} />
+              albumId
+            </Fab>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <main className='container'>
         {users.map(({ name, username, phone, website, id }) => (
           <Accordion>
             <AccordionSummary
@@ -140,7 +177,9 @@ const Users = () => {
                         <Typography variant='h6'>{username}</Typography>
                       </StyledTableCell>
                       <StyledTableCell>
-                        <Typography variant='h6'>{phone}</Typography>
+                        <Typography variant='h6'>
+                          {phone.split('x')[0]}
+                        </Typography>
                       </StyledTableCell>
                       <StyledTableCell>
                         <Typography variant='h6'>{website}</Typography>
@@ -152,21 +191,24 @@ const Users = () => {
             </AccordionSummary>
             <AccordionDetails>
               <section>
-                {filterAlbumsFunk(id).map((item) => (
-                  <div>
-                    <div
-                      style={{
-                        border: '4px ridge rgba(211, 220, 50, .6)',
-                        padding: '5px'
-                      }}
-                    >
-                      {' '}
-                      {item.title}
+                {getAlbums &&
+                  filterAlbumsFunk(id).map((item) => (
+                    <div>
+                      <div
+                        style={{
+                          border: '4px ridge rgba(211, 220, 50, .6)',
+                          padding: '5px'
+                        }}
+                      >
+                        {' '}
+                        {item.title}
+                      </div>
+                      {getPhotos &&
+                        filterPhotosFunk(item.id).map((list) => (
+                          <img src={list.thumbnailUrl}></img>
+                        ))}
                     </div>
-                    {filterPhotosFunk(item.id).map((list) => (
-	                  <img src={list.thumbnailUrl}></img>))}
-                  </div>
-                ))}
+                  ))}
               </section>
             </AccordionDetails>
           </Accordion>
@@ -176,6 +218,3 @@ const Users = () => {
   );
 };
 export default Users;
-
-// {filterPhotosFunk(item.id).map((list) => (
-// 	<img src={list.url}></img>))}

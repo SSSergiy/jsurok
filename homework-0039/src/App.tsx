@@ -10,18 +10,18 @@ const router = createBrowserRouter([
     path: '/',
     element: <Users/>
   },
-  {
-    path: '/albums',
-    element: <Albums/>
-  },
+  // {
+  //   path: '/albums',
+  //   element: <Albums/>
+  // },
   // {
   //   path: '/albums/:userId/',
   //   element: <Albums/>
   // },
-  {
-    path: '/photos',
-    element: <Fotos/>
-  },
+  // {
+  //   path: '/photos',
+  //   element: <Fotos/>
+  // },
 ]);
 
 function App() {

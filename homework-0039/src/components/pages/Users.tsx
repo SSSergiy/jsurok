@@ -1,21 +1,16 @@
 import { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom'; //ExpandMoreIcon
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 
 import {
   TableContainer,
   Table,
   TableHead,
   TableRow,
-  TableBody,
   TableCell,
-  Paper,
   tableCellClasses,
   styled,
   Avatar,
@@ -61,13 +56,7 @@ const Users = () => {
       });
   }, []);
 
-  const tableTitles = [
-    { title: 'avatar' },
-    { title: 'name' },
-    { title: 'username' },
-    { title: 'phone' },
-    { title: 'website' }
-  ];
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.primary.light,
@@ -120,7 +109,11 @@ const Users = () => {
   const lookAlbums = () => {
     sepPhotos(false);
     sepAlbums(true);
-  };
+	};
+	const removAlbums = () => {
+		sepPhotos(false);
+		sepAlbums(false);
+	}
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -133,13 +126,17 @@ const Users = () => {
               padding: '30px'
             }}
           >
-            <Fab variant='extended'>
-              <NavigationIcon sx={{ mr: 1 }} onClick={lookAlbums} />
-              userId
+            <Fab variant='extended'onClick={lookAlbums}>
+              <NavigationIcon  />
+             ALBOMS
             </Fab>
-            <Fab variant='extended'>
-              <NavigationIcon sx={{ mr: 1 }} onClick={lookPhotos} />
-              albumId
+            <Fab variant='extended'onClick={removAlbums}>
+              <NavigationIcon  />
+             Remowe ALL action
+            </Fab>
+            <Fab variant='extended'onClick={lookPhotos} >
+              <NavigationIcon  />
+              PHOTOS
             </Fab>
           </Toolbar>
         </AppBar>

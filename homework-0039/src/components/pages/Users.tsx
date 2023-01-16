@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import CollectionsIcon from '@mui/icons-material/Collections';
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import NotInterestedIcon from '@mui/icons-material/NotInterested';
+import {
+  NotInterested,
+  ListAlt,
+  Collections,
+  ExpandMore,
+} from "@mui/icons-material";
 import {
   AppBar,
   Box,
@@ -125,15 +126,15 @@ const Users = () => {
             }}
           >
             <Fab variant="extended" onClick={lookAlbums}>
-              <ListAltIcon />
+              <ListAlt />
               Album
             </Fab>
             <Fab variant="extended" onClick={removAlbums}>
-              <NotInterestedIcon/>
+              <NotInterested />
               Remove ALL actions
             </Fab>
             <Fab variant="extended" onClick={lookPhotos}>
-              <CollectionsIcon />
+              <Collections />
               Photos
             </Fab>
           </Toolbar>
@@ -143,7 +144,7 @@ const Users = () => {
         {users.map(({ name, username, phone, website, id }) => (
           <Accordion>
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
+              expandIcon={<ExpandMore />}
               aria-controls="panel1a-content"
               id="panel1a-header"
             >

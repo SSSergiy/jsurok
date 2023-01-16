@@ -27,8 +27,6 @@ const Users = () => {
   const [getPhotos, sepPhotos] = useState(false);
   const [getAlbums, sepAlbums] = useState(false);
 
-  console.log(getAlbums);
-
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
@@ -80,37 +78,37 @@ const Users = () => {
     }
     return color;
   }
-  function stringAvatar(name: string) {
+  function stringAvatar(name:string) {
     return {
       sx: {
-        bgcolor: stringToColor(name)
+        bgcolor: stringToColor(name )
       },
       children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`
     };
   }
 
-  const filterAlbumsFunk = (id) => {
-    const arr = albums.filter((item) => {
+  const filterAlbumsFunk = (id:number)=> {
+    const arr = albums.filter((item):boolean => {
       return item.userId === id;
     });
     return arr;
   };
 
-  const filterPhotosFunk = (id) => {
+  const filterPhotosFunk = (id:number) => {
     const arr = photos.filter((item) => {
       return item.albumId === id;
     });
     return arr;
   };
 
-  const lookPhotos = () => {
+  const lookPhotos = ():void => {
     sepPhotos(true);
   };
-  const lookAlbums = () => {
+  const lookAlbums = ():void => {
     sepPhotos(false);
     sepAlbums(true);
 	};
-	const removAlbums = () => {
+	const removAlbums = ():void => {
 		sepPhotos(false);
 		sepAlbums(false);
 	}

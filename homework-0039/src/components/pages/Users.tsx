@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import NavigationIcon from '@mui/icons-material/Navigation';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-
 import {
+	AppBar,
+	Box,
+	Toolbar,
   TableContainer,
   Table,
   TableHead,
@@ -81,7 +80,7 @@ const Users = () => {
   function stringAvatar(name:string) {
     return {
       sx: {
-        bgcolor: stringToColor(name )
+        bgcolor: stringToColor(name)
       },
       children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`
     };

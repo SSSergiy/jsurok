@@ -123,15 +123,15 @@ const Users = () => {
           >
             <Fab variant="extended" onClick={lookAlbums}>
               <NavigationIcon />
-              ALBOMS
+              Album
             </Fab>
             <Fab variant="extended" onClick={removAlbums}>
               <NavigationIcon />
-              Remowe ALL action
+              Remove ALL action
             </Fab>
             <Fab variant="extended" onClick={lookPhotos}>
               <NavigationIcon />
-              PHOTOS
+              Photos
             </Fab>
           </Toolbar>
         </AppBar>

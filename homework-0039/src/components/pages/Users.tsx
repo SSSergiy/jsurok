@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import CollectionsIcon from '@mui/icons-material/Collections';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import NotInterestedIcon from '@mui/icons-material/NotInterested';
 import {
   AppBar,
   Box,
@@ -122,15 +125,15 @@ const Users = () => {
             }}
           >
             <Fab variant="extended" onClick={lookAlbums}>
-              <NavigationIcon />
+              <ListAltIcon />
               Album
             </Fab>
             <Fab variant="extended" onClick={removAlbums}>
-              <NavigationIcon />
-              Remove ALL action
+              <NotInterestedIcon/>
+              Remove ALL actions
             </Fab>
             <Fab variant="extended" onClick={lookPhotos}>
-              <NavigationIcon />
+              <CollectionsIcon />
               Photos
             </Fab>
           </Toolbar>
@@ -170,7 +173,7 @@ const Users = () => {
                       </StyledTableCell>
                       <StyledTableCell>
                         <Typography variant="h6">
-                          {phone.split("x")[0]}
+                          {phone.split("x")[0].replace(/\D+/g, "")}
                         </Typography>
                       </StyledTableCell>
                       <StyledTableCell>
@@ -182,11 +185,11 @@ const Users = () => {
               </TableContainer>
             </AccordionSummary>
             <AccordionDetails>
-              <section>
+              <div>
                 {getAlbums &&
                   filterAlbumsFunk(id).map((item) => (
                     <div>
-                      <div
+                      <p
                         style={{
                           border: "4px ridge rgba(211, 220, 50, .6)",
                           padding: "5px",
@@ -194,14 +197,14 @@ const Users = () => {
                       >
                         {" "}
                         {item.title}
-                      </div>
+                      </p>
                       {getPhotos &&
                         filterPhotosFunk(item.id).map((list) => (
                           <img src={list.thumbnailUrl}></img>
                         ))}
                     </div>
                   ))}
-              </section>
+              </div>
             </AccordionDetails>
           </Accordion>
         ))}

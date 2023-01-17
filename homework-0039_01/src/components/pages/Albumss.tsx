@@ -21,13 +21,11 @@ import {
 
 const Albumss = () => {
   const location = useLocation();
-  location.state;
-  console.log(location.state);
-
-
   const [albums, setAlbums] = useState([]);
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/${location.state.id}/albums`)
+    fetch(
+      `https://jsonplaceholder.typicode.com/users/${location.state.id}/albums`
+    )
       .then((res) => res.json())
       .then((albums) => {
         setAlbums(albums);
@@ -70,13 +68,6 @@ const Albumss = () => {
       children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
     };
   }
-
-  // const filterPhotosFunk = (id: number) => {
-  //   const arr = albums.filter((item) => {
-  //     return item.userId === id;
-  //   });
-  //   return arr;
-  // };
   return (
     <>
       <Box sx={{ flexGrow: 1 }} className="container">
@@ -103,40 +94,38 @@ const Albumss = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {albums.map(
-              ({ title, userId, id }, index) => (
-                <TableRow hover key={id}>
-                  <TableCell colSpan={2}>
-                    <Typography variant="h6">{index + 1}</Typography>
-                  </TableCell>
-                  <TableCell colSpan={2}>
-                    <Typography variant="h6">{title}</Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Link
-                      to={`/${id}/photos`}
-                      state={{
-                        indexAlbum: index + 1,
-                        titleAlbum: title,
-                        nameUser: location.state.name,
-                        usernameUser: location.state.username,
-                        phoneUser: location.state.phone,
-                        websiteUser: location.state.website,
-                        idTitle: id,
-                      }}
+            {albums.map(({ title, userId, id }, index) => (
+              <TableRow hover key={id}>
+                <TableCell colSpan={2}>
+                  <Typography variant="h6">{index + 1}</Typography>
+                </TableCell>
+                <TableCell colSpan={2}>
+                  <Typography variant="h6">{title}</Typography>
+                </TableCell>
+                <TableCell>
+                  <Link
+                    to={`/${id}/photos`}
+                    state={{
+                      indexAlbum: index + 1,
+                      titleAlbum: title,
+                      nameUser: location.state.name,
+                      usernameUser: location.state.username,
+                      phoneUser: location.state.phone,
+                      websiteUser: location.state.website,
+                      idTitle: id,
+                    }}
+                  >
+                    <Button
+                      variant="contained"
+                      color="success"
+                      startIcon={<PhotoLibraryIcon />}
                     >
-                      <Button
-                        variant="contained"
-                        color="success"
-                        startIcon={<PhotoLibraryIcon />}
-                      >
-                        Photos
-                      </Button>
-                    </Link>
-                  </TableCell>
-                </TableRow>
-              )
-            )}
+                      Photos
+                    </Button>
+                  </Link>
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
           <TableFooter>
             <TableRow>

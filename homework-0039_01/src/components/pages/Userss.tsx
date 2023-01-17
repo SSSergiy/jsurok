@@ -1,28 +1,13 @@
 import { useEffect, useState } from "react";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  TableContainer,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  tableCellClasses,
-  styled,
-  Avatar,
-  Typography,
-  TableFooter,
-  TableBody,
-  Button,
-} from "@mui/material";
+import {  Link, } from "react-router-dom";
+import {AppBar,Box,Toolbar,TableContainer,Table,TableHead,TableRow,TableCell,tableCellClasses,styled,Avatar,Typography,TableFooter,TableBody,Button,} from "@mui/material";
 
 const Userss = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch(`https://jsonplaceholder.typicode.com/users`)
       .then((response) => response.json())
       .then((users) => {
         setUsers(users);
@@ -112,13 +97,25 @@ const Userss = () => {
                   <Typography variant="h6">{website}</Typography>
                 </StyledTableCell>
                 <StyledTableCell>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    startIcon={<LibraryBooksIcon />}
+                  <Link
+                    to={`/${id}/albums`}
+
+                      state= {{
+                        name: name,
+                        username: username,
+                        phone: phone,
+                        website: website,
+                        id: id,
+                      }}
                   >
-                    Album
-                  </Button>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      startIcon={<LibraryBooksIcon />}
+                    >
+                      Album
+                    </Button>
+                  </Link>
                 </StyledTableCell>
               </TableRow>
             ))}

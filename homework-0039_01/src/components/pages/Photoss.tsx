@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  NotInterested,
-  ListAlt,
-  Collections,
-  ExpandMore,
-} from "@mui/icons-material";
+import { useLocation } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -17,20 +12,18 @@ import {
   tableCellClasses,
   styled,
   Avatar,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
   Typography,
-  TableFooter,
-  Fab,
-  ImageListItem,
   ImageList,
 } from "@mui/material";
 
 const Photoss = () => {
   const [photos, setPhotos] = useState([]);
+  const location = useLocation();
+  location.state;
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/albums/1/photos")
+    fetch(
+      `https://jsonplaceholder.typicode.com/albums/${location.state.idTitle}/photos`
+    )
       .then((res) => res.json())
       .then((photos) => {
         setPhotos(photos);
@@ -81,34 +74,48 @@ const Photoss = () => {
       </Box>
       <TableContainer>
         <Table>
-        <TableHead>
+          <TableHead>
             <TableRow>
-              <StyledTableCell>Avatar</StyledTableCell>
-              <StyledTableCell>Name</StyledTableCell>
-              <StyledTableCell>Username</StyledTableCell>
-              <StyledTableCell>Phone</StyledTableCell>
-              <StyledTableCell>Website</StyledTableCell>
-              <StyledTableCell>Actions</StyledTableCell>
+              <StyledTableCell>
+                <Avatar {...stringAvatar(location.state.nameUser)} />
+              </StyledTableCell>
+              <StyledTableCell>
+                Name - {location.state.nameUser}
+              </StyledTableCell>
+              <StyledTableCell>
+                Username - {location.state.usernameUser}
+              </StyledTableCell>
+              <StyledTableCell>
+                Phone - {location.state.phoneUser}
+              </StyledTableCell>
+              <StyledTableCell>
+                website - {location.state.websiteUser}
+              </StyledTableCell>
             </TableRow>
           </TableHead>
-          <TableHead >
-            <TableRow >
-              <StyledTableCell colSpan={3}>number id</StyledTableCell>
-              <StyledTableCell colSpan={3}>Name Albom</StyledTableCell>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell colSpan={3}>
+                Album number - {location.state.indexAlbum}
+              </StyledTableCell>
+              <StyledTableCell colSpan={3}>
+                Album name - "{location.state.titleAlbum}"
+              </StyledTableCell>
             </TableRow>
           </TableHead>
         </Table>
       </TableContainer>
-      <ImageList sx={{ width: "100vw", height: 550 }} cols={17} rowHeight={150}>
-        {photos.map((itemPhoto) => (
-          <ImageListItem key={itemPhoto.id}>
+      <ImageList sx={{ width: "100vw", height: 1000 }} cols={7} rowHeight={150}>
+        {photos.map((itemPhoto, index) => (
+          <figure key={index + 1}>
             <img
               src={itemPhoto.url}
               srcSet={itemPhoto.thumbnailUrl}
               alt={itemPhoto.title}
               loading="lazy"
             />
-          </ImageListItem>
+            <figcaption>{itemPhoto.title}</figcaption>
+          </figure>
         ))}
       </ImageList>
     </>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
+import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+import { Link, useLocation } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -19,15 +20,17 @@ import {
 } from "@mui/material";
 
 const Albumss = () => {
+  const location = useLocation();
+  location.state;
+
   const [albums, setAlbums] = useState([]);
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users/1/albums")
+    fetch("https://jsonplaceholder.typicode.com/albums")
       .then((res) => res.json())
       .then((albums) => {
         setAlbums(albums);
       });
   }, []);
-  console.log(albums);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -66,6 +69,12 @@ const Albumss = () => {
     };
   }
 
+  const filterPhotosFunk = (id: number) => {
+    const arr = albums.filter((item) => {
+      return item.userId === id;
+    });
+    return arr;
+  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }} className="container">
@@ -81,35 +90,51 @@ const Albumss = () => {
         <Table>
           <TableHead>
             <TableRow>
-              {/* <StyledTableCell><Avatar {...stringAvatar(name)} /></StyledTableCell>
-              <StyledTableCell>{name}</StyledTableCell>
-              <StyledTableCell>{ username}</StyledTableCell>
-              <StyledTableCell>{phone}</StyledTableCell>
-              <StyledTableCell>{website}</StyledTableCell>
-              <StyledTableCell>Actions</StyledTableCell> */}
+              <StyledTableCell>
+                <Avatar {...stringAvatar(location.state.name)} />
+              </StyledTableCell>
+              <StyledTableCell>{location.state.name}</StyledTableCell>
+              <StyledTableCell>{location.state.username}</StyledTableCell>
+              <StyledTableCell>{location.state.phone}</StyledTableCell>
+              <StyledTableCell>{location.state.website}</StyledTableCell>
+              <StyledTableCell>Actions</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {albums.map((albomIsems) => (
-              <TableRow hover key={albomIsems.id}>
-                <StyledTableCell></StyledTableCell>
-                <StyledTableCell>
-                  <Typography variant="h6">{albomIsems.id}</Typography>
-                </StyledTableCell>
-                <StyledTableCell>
-                  <Typography variant="h6">{albomIsems.title}</Typography>
-                </StyledTableCell>
-                <StyledTableCell>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    startIcon={<PhotoLibraryIcon />}
-                  >
-                    Photos
-                  </Button>
-                </StyledTableCell>
-              </TableRow>
-            ))}
+            {filterPhotosFunk(location.state.id).map(
+              ({ title, userId, id }, index) => (
+                <TableRow hover key={id}>
+                  <TableCell colSpan={2}>
+                    <Typography variant="h6">{index + 1}</Typography>
+                  </TableCell>
+                  <TableCell colSpan={2}>
+                    <Typography variant="h6">{title}</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Link
+                      to={`/${id}/photos`}
+                      state={{
+                        indexAlbum: index + 1,
+                        titleAlbum: title,
+                        nameUser: location.state.name,
+                        usernameUser: location.state.username,
+                        phoneUser: location.state.phone,
+                        websiteUser: location.state.website,
+                        idTitle: id,
+                      }}
+                    >
+                      <Button
+                        variant="contained"
+                        color="success"
+                        startIcon={<PhotoLibraryIcon />}
+                      >
+                        Photos
+                      </Button>
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              )
+            )}
           </TableBody>
           <TableFooter>
             <TableRow>

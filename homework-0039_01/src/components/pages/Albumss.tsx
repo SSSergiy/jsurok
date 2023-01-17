@@ -22,10 +22,12 @@ import {
 const Albumss = () => {
   const location = useLocation();
   location.state;
+  console.log(location.state);
+
 
   const [albums, setAlbums] = useState([]);
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/albums")
+    fetch(`https://jsonplaceholder.typicode.com/users/${location.state.id}/albums`)
       .then((res) => res.json())
       .then((albums) => {
         setAlbums(albums);
@@ -69,12 +71,12 @@ const Albumss = () => {
     };
   }
 
-  const filterPhotosFunk = (id: number) => {
-    const arr = albums.filter((item) => {
-      return item.userId === id;
-    });
-    return arr;
-  };
+  // const filterPhotosFunk = (id: number) => {
+  //   const arr = albums.filter((item) => {
+  //     return item.userId === id;
+  //   });
+  //   return arr;
+  // };
   return (
     <>
       <Box sx={{ flexGrow: 1 }} className="container">
@@ -101,7 +103,7 @@ const Albumss = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filterPhotosFunk(location.state.id).map(
+            {albums.map(
               ({ title, userId, id }, index) => (
                 <TableRow hover key={id}>
                   <TableCell colSpan={2}>

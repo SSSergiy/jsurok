@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,FC } from "react";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -19,9 +19,15 @@ import {
   Button,
 } from "@mui/material";
 
-const Albumss = () => {
+
+
+const Albumss:FC = () => {
   const location = useLocation();
+
+
   const [albums, setAlbums] = useState([]);
+
+
   useEffect(() => {
     fetch(
       `https://jsonplaceholder.typicode.com/users/${location.state.id}/albums`
@@ -31,6 +37,8 @@ const Albumss = () => {
         setAlbums(albums);
       });
   }, []);
+
+
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -104,7 +112,7 @@ const Albumss = () => {
                 </TableCell>
                 <TableCell>
                   <Link
-                    to={`/${id}/photos`}
+                    to={`/users/${userId}/albums/${id}/photos`}
                     state={{
                       indexAlbum: index + 1,
                       titleAlbum: title,

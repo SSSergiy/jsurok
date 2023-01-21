@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,FC } from "react";
 import { useLocation } from "react-router-dom";
 import {
   AppBar,
@@ -16,16 +16,16 @@ import {
   ImageList,
 } from "@mui/material";
 
-const Photoss = () => {
+const Photoss:FC = () => {
   const [photos, setPhotos] = useState([]);
   const location = useLocation();
   location.state;
-  useEffect(() => {
+  useEffect(():void => {
     fetch(
       `https://jsonplaceholder.typicode.com/albums/${location.state.idTitle}/photos`
     )
-      .then((res) => res.json())
-      .then((photos) => {
+      .then((res):Promise<any> => res.json())
+      .then((photos):void => {
         setPhotos(photos);
       });
   }, []);
@@ -59,6 +59,12 @@ const Photoss = () => {
       },
       children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
     };
+  }
+
+  interface TypeItemPhoto {
+    url :string
+    thumbnailUrl :string
+    title :string
   }
 
   return (
@@ -105,11 +111,12 @@ const Photoss = () => {
           </TableHead>
         </Table>
       </TableContainer>
-      <ImageList sx={{ width: "100vw", height: 1000 }} cols={7} rowHeight={150}>
-        {photos.map((itemPhoto, index) => (
+      <ImageList cols={7} rowHeight={150}>
+        {photos.map((itemPhoto:TypeItemPhoto, index) => (
+
           <figure key={index + 1}>
             <img
-              src={itemPhoto.url}
+              src={itemPhoto.url }
               srcSet={itemPhoto.thumbnailUrl}
               alt={itemPhoto.title}
               loading="lazy"
@@ -122,3 +129,4 @@ const Photoss = () => {
   );
 };
 export default Photoss;
+

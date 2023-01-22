@@ -1,5 +1,5 @@
 import { useEffect, useState,FC } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useParams } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -16,19 +16,22 @@ import {
   ImageList,
 } from "@mui/material";
 
-const Photoss:FC = () => {
+const Photoss: FC = () => {
+  
   const [photos, setPhotos] = useState([]);
-  const location = useLocation();
-  location.state;
+  const { albumId } = useParams();
+
+  // const location = useLocation();
+  // location.state;
   useEffect(():void => {
     fetch(
-      `https://jsonplaceholder.typicode.com/albums/${location.state.idTitle}/photos`
+      `https://jsonplaceholder.typicode.com/albums/${albumId}/photos`
     )
       .then((res):Promise<any> => res.json())
       .then((photos):void => {
         setPhotos(photos);
       });
-  }, []);
+  }, [albumId]);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -81,7 +84,7 @@ const Photoss:FC = () => {
       <TableContainer>
         <Table>
           <TableHead>
-            <TableRow>
+            {/* <TableRow>
               <StyledTableCell>
                 <Avatar {...stringAvatar(location.state.nameUser)} />
               </StyledTableCell>
@@ -97,17 +100,17 @@ const Photoss:FC = () => {
               <StyledTableCell>
                 website - {location.state.websiteUser}
               </StyledTableCell>
-            </TableRow>
+            </TableRow> */}
           </TableHead>
           <TableHead>
-            <TableRow>
+            {/* <TableRow>
               <StyledTableCell colSpan={3}>
                 Album number - {location.state.indexAlbum}
               </StyledTableCell>
               <StyledTableCell colSpan={3}>
                 Album name - "{location.state.titleAlbum}"
               </StyledTableCell>
-            </TableRow>
+            </TableRow> */}
           </TableHead>
         </Table>
       </TableContainer>

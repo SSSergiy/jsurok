@@ -100,7 +100,7 @@ const Userss:FC = () => {
                 </StyledTableCell>
                 <StyledTableCell>
                   <Typography variant="h6">
-                    {phone.split("x")[0].replace(/\D+/g, "")}
+                    {phone}
                   </Typography>
                 </StyledTableCell>
                 <StyledTableCell>

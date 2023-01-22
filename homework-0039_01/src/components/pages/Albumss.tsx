@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -19,12 +19,25 @@ import {
   Button,
 } from "@mui/material";
 
-const Albumss = () => {
-  const location = useLocation();
-  const [albums, setAlbums] = useState([]);
+interface Album {
+  userId: number
+  id: number
+  title: string
+}
+
+const Albumss: FC = () => {
+  const location = useLocation()
+  const [locationstate, setlocationstate] = useState(location.state);
+  console.log(locationstate);
+
+  const { userId } = useParams();
+  // const { albumId } = useParams();
+  // console.log(location.state);
+  const [albums, setAlbums] = useState<Album[]>([]);
+
   useEffect(() => {
     fetch(
-      `https://jsonplaceholder.typicode.com/users/${location.state.id}/albums`
+      `https://jsonplaceholder.typicode.com/users/${userId}/albums`
     )
       .then((res) => res.json())
       .then((albums) => {
@@ -81,39 +94,39 @@ const Albumss = () => {
       </Box>
       <TableContainer>
         <Table>
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>
-                <Avatar {...stringAvatar(location.state.name)} />
-              </StyledTableCell>
-              <StyledTableCell>{location.state.name}</StyledTableCell>
-              <StyledTableCell>{location.state.username}</StyledTableCell>
-              <StyledTableCell>{location.state.phone}</StyledTableCell>
-              <StyledTableCell>{location.state.website}</StyledTableCell>
-              <StyledTableCell>Actions</StyledTableCell>
-            </TableRow>
-          </TableHead>
+  { locationstate &&     <TableHead>
+          <TableRow>
+            <StyledTableCell>
+              <Avatar {...stringAvatar(locationstate.name)} />
+            </StyledTableCell>
+            <StyledTableCell>{locationstate.name}</StyledTableCell>
+            <StyledTableCell>{locationstate.username}</StyledTableCell>
+            <StyledTableCell>{locationstate.phone}</StyledTableCell>
+            <StyledTableCell>{locationstate.website}</StyledTableCell>
+            <StyledTableCell>Actions</StyledTableCell>
+          </TableRow>
+        </TableHead>}
           <TableBody>
-            {albums.map(({ title, userId, id }, index) => (
-              <TableRow hover key={id}>
+            {albums.map((item:Album, index) => (
+              <TableRow hover key={item.id}>
                 <TableCell colSpan={2}>
                   <Typography variant="h6">{index + 1}</Typography>
                 </TableCell>
                 <TableCell colSpan={2}>
-                  <Typography variant="h6">{title}</Typography>
+                  <Typography variant="h6">{item.title}</Typography>
                 </TableCell>
                 <TableCell>
                   <Link
-                    to={`/${id}/photos`}
-                    state={{
-                      indexAlbum: index + 1,
-                      titleAlbum: title,
-                      nameUser: location.state.name,
-                      usernameUser: location.state.username,
-                      phoneUser: location.state.phone,
-                      websiteUser: location.state.website,
-                      idTitle: id,
-                    }}
+                    to={`/users/${item.userId}/albums/${item.id}/photos`}
+                    // state={{
+                    //   indexAlbum: index + 1,
+                    //   titleAlbum: item.title,
+                    //   nameUser: location.state.name,
+                    //   usernameUser: location.state.username,
+                    //   phoneUser: location.state.phone,
+                    //   websiteUser: location.state.website,
+                    //   idTitle: item.id,
+                    // }}
                   >
                     <Button
                       variant="contained"

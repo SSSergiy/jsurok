@@ -1,5 +1,5 @@
 // import Table from './components/Table';
-import { StrictMode } from "react";
+import { StrictMode, FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Userss from "./components/pages/Userss";
 import Photoss from "./components/pages/Photoss";
@@ -11,20 +11,24 @@ const router = createBrowserRouter([
     element: <Userss />,
   },
   {
-    path: "/:userId/albums",
+    path: "/users/:userId/albums",
     element: <Albumss />,
   },
+  // {
+  //   path: "/:albumId/photos",
+  //   element: <Photoss />,
+  // },
   {
-    path: "/:albumId/photos",
+    path: "/users/:userId/albums/:albumId/photos",
     element: <Photoss />,
   },
 ]);
 
 function App() {
   return (
-    <StrictMode>
+    <div>
       <RouterProvider router={router} />
-    </StrictMode>
+    </div>
   );
 }
 

@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,FC } from "react";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import {  Link, } from "react-router-dom";
 import {AppBar,Box,Toolbar,TableContainer,Table,TableHead,TableRow,TableCell,tableCellClasses,styled,Avatar,Typography,TableFooter,TableBody,Button,} from "@mui/material";
 
-const Userss = () => {
+const Userss:FC = () => {
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
+  useEffect(():void => {
     fetch(`https://jsonplaceholder.typicode.com/users`)
-      .then((response) => response.json())
-      .then((users) => {
+      .then((response):Promise<any> => response.json())
+      .then((users):void => {
         setUsers(users);
       });
   }, []);
@@ -26,9 +26,10 @@ const Userss = () => {
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
     },
-  }));
+	}));
 
-  function stringToColor(string: string) {
+
+  function stringToColor(string: string):string {
     let hash = 0;
     let i;
     for (i = 0; i < string.length; i += 1) {
@@ -42,7 +43,16 @@ const Userss = () => {
     return color;
   }
 
-  function stringAvatar(name: string) {
+  interface TypesAvatar {
+    sx: {
+      bgcolor: string
+
+    }
+    children: string
+
+  }
+
+  function stringAvatar(name: string):TypesAvatar {
     return {
       sx: {
         bgcolor: stringToColor(name),
@@ -90,7 +100,7 @@ const Userss = () => {
                 </StyledTableCell>
                 <StyledTableCell>
                   <Typography variant="h6">
-                    {phone.split("x")[0].replace(/\D+/g, "")}
+                    {phone}
                   </Typography>
                 </StyledTableCell>
                 <StyledTableCell>
@@ -98,7 +108,7 @@ const Userss = () => {
                 </StyledTableCell>
                 <StyledTableCell>
                   <Link
-                    to={`/${id}/albums`}
+                    to={`/users/${id}/albums`}
 
                       state= {{
                         name: name,

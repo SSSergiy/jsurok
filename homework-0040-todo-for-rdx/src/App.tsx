@@ -28,7 +28,7 @@ function App() {
          })
       );
    }, [dispatch, namer]);
-   const onChangeValue = (event: any) => {
+   const onChangeValue = (event) => {
       event.preventDefault();
       setName(event.target.value);
    };

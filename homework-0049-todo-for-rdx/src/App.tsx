@@ -35,12 +35,13 @@ function App() {
    const handleClear = () => {
       setName('');
    };
-
+	
    return (
       <>
          <ul className="list-group">
-            {todoQuestt.map((item:StateTodo, index:number) => (
-               <Todo item={item.quest} list={index} />
+				 {todoQuestt.map((item: StateTodo, index: number) => (
+							
+               <Todo item={item.quest} key={index+1}/>
             ))}
          </ul>
             <input

@@ -5,7 +5,6 @@ import React from 'react';
 interface StateTodo {
    quest: string;
    id: number;
-   key: number;
 }
 type  StateTodos = StateTodo[]
 

@@ -10,24 +10,23 @@ type StateTodos = StateTodo[];
 
 const App: React.FC = () => {
    const [name, setName] = React.useState('');
-   const [idName, setidName] = React.useState("");
-	
-	 
+   const [idName, setidName] = React.useState('');
+
    const dispatch = useDispatch();
    const todoQuestt: StateTodos = useSelector(selectTodos);
    const handleAddTodo = React.useCallback(() => {
-		dispatch(
-			addTodo({
-				quest: name,
-				id: idName ,
-			})
+      dispatch(
+         addTodo({
+            quest: name,
+            id: idName,
+         })
       );
-		}, [dispatch, name, idName]);
-		
-		const handleChangeValue = (event:any) => {
+   }, [dispatch, name, idName]);
+
+   const handleChangeValue = (event: any) => {
       event.preventDefault();
       setName(event.target.value);
-			setidName(new Date().toISOString()+Date.now())
+      setidName(new Date().toISOString() + Date.now());
    };
    const handleClear = () => {
       setName('');
@@ -59,5 +58,5 @@ const App: React.FC = () => {
          </button>
       </>
    );
-};	
+};
 export default App;

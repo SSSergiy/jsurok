@@ -31,4 +31,4 @@ export const reducer = (state = initialState, action) => {
 
 // selectors
 
-export const selectCount = (state) => state.stateTodos;
+export const selectTodos = (state) => state.stateTodos;

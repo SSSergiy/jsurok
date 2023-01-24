@@ -1,61 +1,48 @@
 import Todo from './components/Todo';
-import { addTodo, selectCount } from './rdx/reducer.js';
+import { addTodo, selectTodos } from './rdx/reducer.js';
 import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
-interface StateTodos{
-	quest: string
-	id: number
-	key: number
-}[]
-interface StateTodo{
-	quest: string
-	id: number
-	key: number
+interface StateTodo {
+   quest: string;
+   id: number;
+   key: number;
 }
+type  StateTodos = StateTodo[]
 
-
-
-function App() {
-   const [namer, setName] = React.useState('');
+const App: React.FC = () => {
+   const [name, setName] = React.useState('');
    const dispatch = useDispatch();
-	const todoQuestt:StateTodos = useSelector(selectCount);
-   const handleIncrement = React.useCallback(() => {
+   const todoQuestt: StateTodos = useSelector(selectTodos);
+   const handleAddTodo = React.useCallback(() => {
       dispatch(
          addTodo({
-            quest: namer,
-            id: 1,
-            key: 2,
+            quest: name,
+            id: Math.floor(Math.random() * 15),
          })
       );
-   }, [dispatch, namer]);
-   const onChangeValue = (event) => {
+   }, [dispatch, name]);
+   const handleChangeValue = (event) => {
       event.preventDefault();
-      setName(event.target.value);
+		 setName(event.target.value);
+		 
    };
    const handleClear = () => {
       setName('');
    };
-	
+
    return (
       <>
          <ul className="list-group">
-				 {todoQuestt.map((item: StateTodo, index: number) => (
-							
-               <Todo item={item.quest} key={index+1}/>
+            {todoQuestt.map((item: StateTodo, index: number) => (
+               <Todo items={item.quest} key={index + 1} />
             ))}
          </ul>
-            <input
-               value={namer}
-               type="text"
-               className="form-control"
-               placeholder="add quest"
-               onChange={onChangeValue}
-            />
+         <input value={name} type="text" className="form-control" placeholder="add quest" onChange={handleChangeValue} />
          <button
             className="btn btn-outline-secondary bg-indigo-100 "
             type="button"
             onClick={() => {
-               handleIncrement();
+               handleAddTodo();
                handleClear();
             }}
          >
@@ -63,5 +50,5 @@ function App() {
          </button>
       </>
    );
-}
+};
 export default App;

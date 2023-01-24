@@ -1,9 +1,9 @@
 const initialState = {
    stateTodos: [
-      { quest: 'work', id: 1, key: 1 },
-      { quest: 'work', id: 2, key: 2 },
-      { quest: 'work', id: 4, key: 3 },
-      { quest: 'work', id: 6, key: 4 },
+      { quest: 'work', id: "ttt"},
+      { quest: 'work', id: "2"},
+      { quest: 'work', id: "4"},
+      { quest: 'work', id: "6"},
    ],
 };
 // acions

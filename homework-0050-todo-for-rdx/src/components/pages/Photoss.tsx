@@ -2,6 +2,7 @@ import { useEffect, useState, FC } from 'react';
 import { useLocation, Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPhotos, selectPhotos } from '../../rdx/reducer';
+import { StyledTableCell, stringAvatar } from './../../utils/skins';
 import {
    AppBar,
    Box,
@@ -10,9 +11,6 @@ import {
    Table,
    TableHead,
    TableRow,
-   TableCell,
-   tableCellClasses,
-   styled,
    Avatar,
    Typography,
    ImageList,
@@ -27,39 +25,6 @@ const Photoss: FC = () => {
       dispatch(fetchPhotos(location.state.idTitle));
    }, [location.state.idTitle, dispatch]);
    console.log(photos);
-
-   const StyledTableCell = styled(TableCell)(({ theme }) => ({
-      [`&.${tableCellClasses.head}`]: {
-         backgroundColor: theme.palette.primary.light,
-         color: theme.palette.common.white,
-      },
-      [`&.${tableCellClasses.body}`]: {
-         fontSize: 14,
-      },
-   }));
-
-   function stringToColor(string: string) {
-      let hash = 0;
-      let i;
-      for (i = 0; i < string.length; i += 1) {
-         hash = string.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      let color = '#';
-      for (i = 0; i < 3; i += 1) {
-         const value = (hash >> (i * 8)) & 0xff;
-         color += `00${value.toString(16)}`.slice(-2);
-      }
-      return color;
-   }
-
-   function stringAvatar(name: string) {
-      return {
-         sx: {
-            bgcolor: stringToColor(name),
-         },
-         children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
-      };
-   }
 
    interface TypeItemPhoto {
       url: string;
